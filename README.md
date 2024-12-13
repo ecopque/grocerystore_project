@@ -3,7 +3,15 @@
 
 ## Overview
 
-Under construction.
+I’m starting to work on a project that aims to simulate the operation of a grocery store, with features to manage product categories, inventory control, sales, suppliers, and much more!
+
+The project includes the following main modules:
+- Product Categories: Classification of items sold in the grocery store.
+- Product Management: Registration of products with name, price, and category.
+- Inventory Control: Available quantity of each product.
+- Sales: Transaction record, with details about sold products, buyers, and sellers.
+- Suppliers: Supplier registration, with information such as CNPJ (Brazilian tax ID) and telephone.
+- People: Modeling of customers and employees, using an inheritance structure to facilitate data management.
 
 ## Contact
 

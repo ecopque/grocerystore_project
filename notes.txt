@@ -15,7 +15,7 @@
 
 ---
 
-Models:
+1. Models:
 . CategoryModel
 . ProductModel
 . StockModel
@@ -24,3 +24,5 @@ Models:
 . PersonModel (EmployeeModel, CustomerModel)
 . EmployeeModel
 . CustomerModel
+
+2. 
