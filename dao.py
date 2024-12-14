@@ -28,11 +28,35 @@ class CategoryDao:
 # CategoryDao.save('Fruits')
 # CategoryDao.save('Vegetables')
 # CategoryDao.save('Legumes')
-CategoryDao.read()
+CategoryDao.read() #4:
 
 class SalesDao:
     @classmethod
     def save(cls, sale: SalesModel):
         with open('sale.txt', 'a') as file:
-            file.writelines(sale.items_sold.name + '|' + sale.items_sold.price + '|' + sale.items_sold.category + '|' + sale.seller + '|' + sale.buyer + '|' + str(sale.quantity_sold) + '|' + '|' + sale.date) #3:
+            file.writelines(sale.items_sold.name + '|' + 
+                            str(sale.items_sold.price) + '|' + 
+                            sale.items_sold.category + '|' + 
+                            sale.seller + '|' + 
+                            sale.buyer + '|' + 
+                            str(sale.quantity_sold) + '|' + 
+                            sale.date) #3:
             file.writelines('\n')
+
+    @classmethod
+    def read(cls):
+        with open('sale.txt', 'r') as file:
+            cls.sale = file.readlines()
+
+        for i in range(len(cls.sale)):
+            cls.sale[i] = cls.sale[i].replace('\n', '')
+        print(cls.sale) #5:
+
+        for i in range(len(cls.sale)):
+            cls.sale[i] = cls.sale[i].split('|')
+        print(cls.sale) #6:
+
+p1_product = ProductModel('bean', 7, 'Legumes')
+p1_sale = SalesModel(p1_product, 'Edson', 'Théo', 3)
+SalesDao.save(p1_sale)
+SalesDao.read() # (#5, #6)

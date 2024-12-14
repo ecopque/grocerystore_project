@@ -18,13 +18,13 @@ class StockModel:
         self.quantity = quantity
 
 class SalesModel:
-    def __init__(self, items_sold: ProductModel, seller, buyer, quantity_sold, sale, date = datetime.now()):
+    def __init__(self, items_sold: ProductModel, seller, buyer, quantity_sold, date = datetime.now().strftime('%d/%m/%Y')):
         self.items_sold = items_sold
         self.product = ProductModel
         self.seller = seller
         self.buyer = buyer
         self.quantity_sold = quantity_sold
-        self.sale = sale
+        # self.sale = sale
         self.date = date
 
 class SupplierModel:
