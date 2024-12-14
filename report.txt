@@ -1,3 +1,7 @@
 # FILE: /report.txt
 
-#1: Aqui, cada elemento de cls.category (que contém os nomes das categorias) é passado como argumento para a criação de um novo objeto da classe CategoryModel. Cada categoria lida do arquivo será usada para instanciar um objeto CategoryModel, que será armazenado na lista cat.
+#1: Here, each element of 'cls.category' (which contains the category names) is passed as an argument to create a new object of 'CategoryModel' class. Each category read from the file will be used to instantiate a 'CategoryModel' object, which will be stored in the cat list.
+
+#2: I decided to replace it with 'for' loops as usual, eliminating as many built-in functions as possible.
+
+#3: Remember that 'items_sold' is of the 'ProductModel' class type, which has 'name', 'price' and 'category'.

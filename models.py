@@ -18,9 +18,9 @@ class StockModel:
         self.quantity = quantity
 
 class SalesModel:
-    def __init__(self, items_sold, product, seller, buyer, quantity_sold, sale, date = datetime.now()):
+    def __init__(self, items_sold: ProductModel, seller, buyer, quantity_sold, sale, date = datetime.now()):
         self.items_sold = items_sold
-        self.product = product
+        self.product = ProductModel
         self.seller = seller
         self.buyer = buyer
         self.quantity_sold = quantity_sold
