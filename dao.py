@@ -69,3 +69,7 @@ SalesDao.read() # (#5, #6)
 x = SalesDao.read()
 print(x[0].buyer) #7:
 print(x[0].items_sold.name) #8:
+print(x[0].items_sold.price) #9:
+
+
+# Edson Copque | https://linktr.ee/edsoncopque

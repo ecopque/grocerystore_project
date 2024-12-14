@@ -16,4 +16,6 @@
 
 #8: Response: bean.
 
-#9: 
+#9: Response: 7.0.
+
+#10: 
