@@ -1,0 +1,3 @@
+# FILE: /report.txt
+
+#1: Aqui, cada elemento de cls.category (que contém os nomes das categorias) é passado como argumento para a criação de um novo objeto da classe CategoryModel. Cada categoria lida do arquivo será usada para instanciar um objeto CategoryModel, que será armazenado na lista cat.

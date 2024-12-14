@@ -22,3 +22,24 @@ class SalesModel:
         ...
 
 ########################
+class CategoryDao:
+    @classmethod
+    def save(cls, category):
+        with open('category.txt', 'a') as file:
+            file.writelines(category)
+            file.writelines('\n')
+    
+    @classmethod
+    def read(cls):
+        with open('category.txt', 'r') as file:
+            cls.category = file.readlines()
+        print(cls.category)
+
+        cat = []
+        for i in cls.category:
+            cat.append(CategoryModel(i))
+
+CategoryDao.save('Hugo')
+CategoryDao.read()
+
+########################
