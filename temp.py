@@ -20,3 +20,5 @@ class StockModel:
 class SalesModel:
     def __init__(self, items_sold, product, seller, buyer, quantity_sold, sale, date = datetime.now()):
         ...
+
+########################
