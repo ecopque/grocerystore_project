@@ -25,9 +25,9 @@ class CategoryDao:
             cat.append(CategoryModel(i)) #1:
         return cat
 
-# CategoryDao.save('Fruits')
-# CategoryDao.save('Vegetables')
-# CategoryDao.save('Legumes')
+CategoryDao.save('Fruits')
+CategoryDao.save('Vegetables')
+CategoryDao.save('Legumes')
 CategoryDao.read() #4:
 
 class SalesDao:
@@ -56,7 +56,15 @@ class SalesDao:
             cls.sale[i] = cls.sale[i].split('|')
         print(cls.sale) #6:
 
+        sale_hd = []
+        for i in cls.sale:
+            sale_hd.append(SalesModel(ProductModel(i[0], float(i[1]), i[2]), i[3], i[4], int(i[5])))
+        return sale_hd
+
 p1_product = ProductModel('bean', 7, 'Legumes')
 p1_sale = SalesModel(p1_product, 'Edson', 'Théo', 3)
 SalesDao.save(p1_sale)
 SalesDao.read() # (#5, #6)
+
+x = SalesDao.read()
+print(x[0].buyer) #7:

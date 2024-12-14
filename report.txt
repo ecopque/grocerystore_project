@@ -11,3 +11,7 @@
 #5: Response: ['bean|7|Legumes|Edson|Théo|3|14/12/2024'].
 
 #6: Response: [['bean', '7', 'Legumes', 'Edson', 'Théo', '3', '14/12/2024']].
+
+#7: Response: Théo.
+
+#8: 
