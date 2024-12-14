@@ -58,7 +58,7 @@ class SalesDao:
 
         sale_hd = []
         for i in cls.sale:
-            sale_hd.append(SalesModel(ProductModel(i[0], float(i[1]), i[2]), i[3], i[4], int(i[5])))
+            sale_hd.append(SalesModel(ProductModel(i[0], float(i[1]), i[2]), i[3], i[4], int(i[5]), i[6]))
         return sale_hd
 
 p1_product = ProductModel('bean', 7, 'Legumes')
@@ -68,3 +68,4 @@ SalesDao.read() # (#5, #6)
 
 x = SalesDao.read()
 print(x[0].buyer) #7:
+print(x[0].items_sold.name) #8:
