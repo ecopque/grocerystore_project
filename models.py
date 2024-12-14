@@ -50,3 +50,6 @@ class EmployeeModel(PersonModel):
 class CustomerModel(PersonModel):
     def __init__(self, name, telephone, cpf, email, address):
         super(EmployeeModel, self).__init__(name, telephone, cpf, email, address)
+
+
+# Edson Copque | https://linktr.ee/edsoncopque
