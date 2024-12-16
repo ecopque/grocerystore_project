@@ -61,6 +61,35 @@ class SalesDao:
             sale_hd.append(SalesModel(ProductModel(i[0], float(i[1]), i[2]), i[3], i[4], int(i[5]), i[6]))
         return sale_hd
 
+class StockDao:
+    @classmethod
+    def save(cls, product: ProductModel, quantity):
+        with open('hd_stock.txt', 'a') as file:
+            file.writelines(product.name + '|' + product.price + '|' + product.category + '|' + str(quantity))
+            file.writelines('\n')
+
+    def read(cls):
+        with open('hd_stock.txt', 'a') as file:
+            cls.stock = file.readlines()
+
+        for i in range(len(cls.stock)):
+            cls.stock[i] = cls.stock[i].replace('\n', '')
+        print(cls.stock)
+
+        for i in range(len(cls.stock)):
+            cls.stock[i] = cls.stock[i].split('|')
+        print(cls.stock)
+
+        stock_hd = []
+        for i in cls.stock:
+            stock_hd.append(StockModel(ProductModel(i[0], i[1], i[2]), i[3]))
+        return stock_hd
+
+
+
+
+
+
 p1_product = ProductModel('bean', 7, 'Legumes')
 p1_sale = SalesModel(p1_product, 'Edson', 'Théo', 3)
 SalesDao.save(p1_sale)

@@ -24,7 +24,6 @@ class SalesModel: # class SalesDao
         self.seller = seller
         self.buyer = buyer
         self.quantity_sold = quantity_sold
-        # self.sale = sale
         self.date = date
 
 class SupplierModel:
