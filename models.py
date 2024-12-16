@@ -2,22 +2,22 @@
 
 from datetime import datetime
 
-class CategoryModel: # class CategoryDao
+class CategoryModel: # class: CategoryDao
     def __init__(self, category):
         self.category = category
 
-class ProductModel:
+class ProductModel: # class: StockDao, SalesDao
     def __init__(self, name, price, category):
         self.name = name
         self.price = price
         self.category = category
 
-class StockModel:
+class StockModel: # class: StockDao
     def __init__(self, product: ProductModel, quantity):
         self.product = product
         self.quantity = quantity
 
-class SalesModel: # class SalesDao
+class SalesModel: # class: SalesDao
     def __init__(self, items_sold: ProductModel, seller, buyer, quantity_sold, date = datetime.now().strftime('%d/%m/%Y')):
         self.items_sold = items_sold
         self.product = ProductModel
