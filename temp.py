@@ -43,3 +43,21 @@ CategoryDao.save('Hugo')
 CategoryDao.read()
 
 ########################
+@classmethod
+    def read(cls):
+        with open('hd_stock.txt', 'a') as file:
+            cls.stock = file.readlines()
+
+        for i in range(len(cls.stock)):
+            cls.stock[i] = cls.stock[i].replace('\n', '')
+        print(cls.stock)
+
+        for i in range(len(cls.stock)):
+            cls.stock[i] = cls.stock[i].split('|')
+        print(cls.stock)
+
+        stock_hd = []
+        for i in cls.stock:
+            stock_hd.append(StockModel(ProductModel(i[0], i[1], i[2]), i[3]))
+        return stock_hd
+# Laços for é elegante, ao contrário de algumas funções e list comprehension.

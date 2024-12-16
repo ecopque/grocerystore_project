@@ -26,7 +26,7 @@ class SalesModel: # class: SalesDao
         self.quantity_sold = quantity_sold
         self.date = date
 
-class SupplierModel:
+class SupplierModel: # class: SupplierDao
     def __init__(self, name, cnpj, telephone, category):
         self.name = name
         self.cnpj = cnpj

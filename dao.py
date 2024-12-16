@@ -73,7 +73,7 @@ class StockDao:
 
     @classmethod
     def read(cls):
-        with open('hd_stock.txt', 'a') as file:
+        with open('hd_stock.txt', 'r') as file:
             cls.stock = file.readlines()
 
         for i in range(len(cls.stock)):
@@ -99,7 +99,21 @@ class SupplierDao:
                             supplier.category)
             file.writelines('\n')
 
+    def read(cls):
+        with open('hd_supplier.txt', 'r') as file:
+            cls.supplier = file.readlines()
 
+        for i in range(len(cls.supplier)):
+            cls.supplier[i] = cls.supplier[i].replace('\n', '')
+        print(cls.supplier)
+
+        for i in range(len(cls.supplier)):
+            cls.supplier[i] = cls.supplier[i].split('|')
+
+        supplier_hd = []
+        for i in cls.supplier:
+            supplier_hd.append(SupplierModel(i[0], i[1], i[2], i[3]))
+        return supplier_hd
 
 
 
