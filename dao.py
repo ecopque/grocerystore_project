@@ -99,6 +99,7 @@ class SupplierDao:
                             supplier.category)
             file.writelines('\n')
 
+    @classmethod
     def read(cls):
         with open('hd_supplier.txt', 'r') as file:
             cls.supplier = file.readlines()
@@ -115,7 +116,33 @@ class SupplierDao:
             supplier_hd.append(SupplierModel(i[0], i[1], i[2], i[3]))
         return supplier_hd
 
+class PersonDao:
+    @classmethod
+    def save(cls, person: PersonModel):
+        with open('hd_person.txt', 'a') as file:
+            file.writelines(person.name + '|' +
+                            person.telephone + '|' +
+                            person.cpf + '|' + 
+                            person.email + '|' + 
+                            person.address)
+    
+    @classmethod
+    def read(cls):
+        with open('hd_person.txt', 'r') as file:
+            cls.person = file.readlines()
 
+        for i in range(len(cls.person)):
+            cls.person[i] = cls.person[i].replace('\n', '')
+        print(cls.person)
+
+        for i in range(len(cls.person)):
+            cls.person[i] = cls.person[i].split('|')
+        print(cls.person)
+
+        person_hd = []
+        for i in cls.person:
+            person_hd.append(PersonModel(i[0], i[1], i[2], i[3], i[4]))
+        return person_hd
 
 
 

@@ -33,7 +33,7 @@ class SupplierModel: # class: SupplierDao
         self.telephone = telephone
         self.category = category
 
-class PersonModel:
+class PersonModel: # class: PersonDao
     def __init__(self, name, telephone, cpf, email, address):
         self.name = name
         self.telephone = telephone
