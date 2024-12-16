@@ -46,7 +46,7 @@ class EmployeeModel(PersonModel): # class: EmployeeDao
         self.clt = clt
         super(EmployeeModel, self).__init__(name, telephone, cpf, email, address)
 
-class CustomerModel(PersonModel):
+class CustomerModel(PersonModel): # class: CustomerDao
     def __init__(self, name, telephone, cpf, email, address):
         super(EmployeeModel, self).__init__(name, telephone, cpf, email, address)
 

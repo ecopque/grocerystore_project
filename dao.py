@@ -169,6 +169,35 @@ class EmployeeDao:
             employee_hd.append(EmployeeModel(i[0], i[1], i[2], i[3], i[4], i[5]))
         return employee_hd
 
+class CustomerDao:
+    @classmethod
+    def save(cls, customer: CustomerModel):
+        with open('customer.txt', 'a') as file:
+            file.writelines(customer.name + '|' +
+                            customer.telephone + '|' +
+                            customer.cpf + '|' +
+                            customer.email + '|' +
+                            customer.address)
+            file.writelines('\n')
+    
+    classmethod
+    def read(cls):
+        with open('customer.txt', 'r') as file:
+            cls.customer = file.readlines()
+
+            for i in range(len(cls.customer)):
+                cls.customer[i] = cls.customer[i].replace('\n', '')
+            print(cls.customer)
+
+            for i in range(len(cls.customer)):
+                cls.customer[i] = cls.customer[i].split('|')
+            print(cls.customer)
+
+            customer_hd = []
+            for i in cls.customer:
+                customer_hd.append(CustomerModel(i[0], i[1], i[2], i[3], i[4]))
+            return customer_hd
+
 
 CategoryDao.save('Fruits')
 CategoryDao.save('Vegetables')
