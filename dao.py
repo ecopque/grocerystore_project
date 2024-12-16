@@ -120,6 +120,7 @@ class PersonDao:
                             person.cpf + '|' + 
                             person.email + '|' + 
                             person.address)
+            file.writelines('\n')
     
     @classmethod
     def read(cls):
