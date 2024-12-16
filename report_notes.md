@@ -1,4 +1,4 @@
-# File: /report_notes.txt
+# File: /report_notes.md
 
 . Cadastro / Alteração / Remoção de Categoria
 . Cadastro / Alteração / Remoção de Produto
