@@ -65,9 +65,13 @@ class StockDao:
     @classmethod
     def save(cls, product: ProductModel, quantity):
         with open('hd_stock.txt', 'a') as file:
-            file.writelines(product.name + '|' + product.price + '|' + product.category + '|' + str(quantity))
+            file.writelines(product.name + '|' + 
+                            product.price + '|' + 
+                            product.category + '|' + 
+                            str(quantity))
             file.writelines('\n')
 
+    @classmethod
     def read(cls):
         with open('hd_stock.txt', 'a') as file:
             cls.stock = file.readlines()
@@ -85,6 +89,15 @@ class StockDao:
             stock_hd.append(StockModel(ProductModel(i[0], i[1], i[2]), i[3]))
         return stock_hd
 
+class SupplierDao:
+    @classmethod
+    def save(cls, supplier: SupplierModel):
+        with open('hd_supplier.txt', 'a') as file:
+            file.writelines(supplier.name + '|' + 
+                            supplier.cnpj + '|' + 
+                            supplier.telephone + '|' + 
+                            supplier.category)
+            file.writelines('\n')
 
 
 
