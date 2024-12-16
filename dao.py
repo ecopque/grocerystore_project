@@ -117,6 +117,8 @@ class SupplierDao:
 
 
 
+
+
 p1_product = ProductModel('bean', 7, 'Legumes')
 p1_sale = SalesModel(p1_product, 'Edson', 'Théo', 3)
 SalesDao.save(p1_sale)
