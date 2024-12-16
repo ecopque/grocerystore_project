@@ -6,13 +6,13 @@ from models import *
 class CategoryDao:
     @classmethod
     def save(cls, category):
-        with open('category.txt', 'a') as file:
+        with open('hd_category.txt', 'a') as file:
             file.writelines(category)
             file.writelines('\n')
 
     @classmethod
     def read(cls):
-        with open('category.txt', 'r') as file:
+        with open('hd_category.txt', 'r') as file:
             cls.category = file.readlines()
         
         # cls.category = list(map(lambda x: x.replace('\n', ''), cls.category)) #2:
@@ -33,7 +33,7 @@ CategoryDao.read() #4:
 class SalesDao:
     @classmethod
     def save(cls, sale: SalesModel):
-        with open('sale.txt', 'a') as file:
+        with open('hd_sale.txt', 'a') as file:
             file.writelines(sale.items_sold.name + '|' + 
                             str(sale.items_sold.price) + '|' + 
                             sale.items_sold.category + '|' + 
@@ -45,7 +45,7 @@ class SalesDao:
 
     @classmethod
     def read(cls):
-        with open('sale.txt', 'r') as file:
+        with open('hd_sale.txt', 'r') as file:
             cls.sale = file.readlines()
 
         for i in range(len(cls.sale)):

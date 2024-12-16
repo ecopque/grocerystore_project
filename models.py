@@ -2,7 +2,7 @@
 
 from datetime import datetime
 
-class CategoryModel:
+class CategoryModel: # class CategoryDao
     def __init__(self, category):
         self.category = category
 
@@ -17,7 +17,7 @@ class StockModel:
         self.product = product
         self.quantity = quantity
 
-class SalesModel:
+class SalesModel: # class SalesDao
     def __init__(self, items_sold: ProductModel, seller, buyer, quantity_sold, date = datetime.now().strftime('%d/%m/%Y')):
         self.items_sold = items_sold
         self.product = ProductModel
