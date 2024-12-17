@@ -18,5 +18,19 @@ class CategoryController:
         else:
             print('The category you want to register already exists.')
 
+    def remove(self, removecategory):
+        read_category = CategoryDao.read()
+
+        # cat = list(filter(lambda x: x.category == removecategory, x))
+        cat = []
+        for i in read_category:
+            if i.category == removecategory:
+                cat.append(i)
+        return cat
+
+
+
+
 registration_test = CategoryController()
 registration_test.register('Cold cuts') #10:
+
