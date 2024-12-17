@@ -21,7 +21,7 @@ class CategoryController:
     def remove(self, removecategory):
         read_category = CategoryDao.read()
 
-        # cat = list(filter(lambda x: x.category == removecategory, x))
+        # cat = list(filter(lambda read_category: read_category.category == removecategory, read_category))
         cat = []
         for i in read_category:
             if i.category == removecategory:
@@ -40,6 +40,22 @@ class CategoryController:
                     for i in read_category:
                         file.writelines(i.category)
                         file.writelines('\n')
+
+    def change(self, changecategory, categorychanged):
+        read_category = CategoryDao.read()
+
+        # cat = list(filter(lambda read_category: read_category.category == changecategory, read_category))
+        cat = []
+        for i in read_category:
+            if i.category == changecategory:
+                cat.append(i)
+        
+        if len(cat) > 0:
+            # cat1 = list(filter(lambda read_category: read_category.category == categorychanged, read_category))
+            cat1 = []
+            for i in read_category:
+                if i.category == categorychanged:
+                    cat1.append(i)
 
 
 registration_test = CategoryController()
