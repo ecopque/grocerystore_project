@@ -20,4 +20,4 @@
 
 - #10: Response: Category registered successfully.
 
-- #11: Here, 'i' is an object of 'CategoryModel' class, which was created inside the read method of the 'CategoryDao' class.
+- #11: Here, 'i' is an object of 'CategoryModel' class, which was created inside the read method of the 'CategoryDao' class. When the code gets to the line of 'if i.category == newcategory', it is accessing the category attribute of that 'CategoryModel' instance.

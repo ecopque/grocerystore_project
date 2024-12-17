@@ -61,3 +61,22 @@ CategoryDao.read()
             stock_hd.append(StockModel(ProductModel(i[0], i[1], i[2]), i[3]))
         return stock_hd
 # Laços for é elegante, ao contrário de algumas funções e list comprehension.
+
+from model import *
+from dao import *
+
+class RegisterController:
+    def register(self, newcategory):
+        read_categorydao = CategoryDao.read()
+
+        exists_flag = False
+        for i in read_categorydao:
+            if i.category == newcategory:
+                exists_flag = True
+        
+        if not exists_flag:
+            CategoryDao.save(newcategory)
+            print('Category registered successfully.')
+
+        else:
+            print('Fiodeu!')
