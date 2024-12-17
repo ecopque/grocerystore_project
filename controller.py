@@ -26,9 +26,20 @@ class CategoryController:
         for i in read_category:
             if i.category == removecategory:
                 cat.append(i)
-        return cat
-
-
+    
+        if len(cat) <= 0:
+            print('The category you want to remove does not exist.')
+        else:
+            for i in range(len(read_category)):
+                if read_category[i] == removecategory:
+                    del read_category[i]
+                    break
+                print('Category removed successfully.')
+               
+                with open('hd_category.txt', 'w') as file:
+                    for i in read_category:
+                        file.writelines(i.category)
+                        file.writelines('\n')
 
 
 registration_test = CategoryController()

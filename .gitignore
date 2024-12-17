@@ -154,8 +154,6 @@ gunicorn.env
 nginx-http.env
 nginx-https.env
 /files_lesson
-temp.py
-/temp.py
 
 
 # https://linktr.ee/edsoncopque

@@ -8,3 +8,6 @@ Cold cuts
 Fruits
 Vegetables
 Legumes
+Fruits
+Vegetables
+Legumes

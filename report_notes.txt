@@ -15,14 +15,7 @@
 
 ---
 
-1. Models:
-. CategoryModel
-. ProductModel
-. StockModel
-. SaleModel
-. SupplierModel
-. PersonModel (EmployeeModel, CustomerModel)
-. EmployeeModel
-. CustomerModel
-
-2. 
+# SEQUENCE:
+1. Models.py
+2. dao.py
+3. controller.py
