@@ -1,4 +1,4 @@
-# File: /report_notes.md
+# File: /report_scheme.txt
 
 . Cadastro / Alteração / Remoção de Categoria
 . Cadastro / Alteração / Remoção de Produto
@@ -16,6 +16,6 @@
 ---
 
 # SEQUENCE:
-1. Models.py
+1. models.py
 2. dao.py
 3. controller.py

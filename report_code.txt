@@ -1,4 +1,4 @@
-# FILE: /report_code.md
+# FILE: /report_code.txt
 
 #1: Here, each element of 'cls.category' (which contains the category names) is passed as an argument to create a new object of 'CategoryModel' class. Each category read from the file will be used to instantiate a 'CategoryModel' object, which will be stored in the cat list.
 
