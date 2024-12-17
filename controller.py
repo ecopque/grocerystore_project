@@ -44,4 +44,3 @@ class CategoryController:
 
 registration_test = CategoryController()
 registration_test.register('Cold cuts') #10:
-
