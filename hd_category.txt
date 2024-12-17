@@ -1,3 +1,10 @@
 Fruits
 Vegetables
 Legumes
+Fruits
+Vegetables
+Legumes
+Cold cuts
+Fruits
+Vegetables
+Legumes

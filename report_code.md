@@ -18,4 +18,6 @@
 
 - #9: Response: 7.0.
 
-- #10: 
+- #10: Response: Category registered successfully.
+
+- #11: Here, 'i' is an object of 'CategoryModel' class, which was created inside the read method of the 'CategoryDao' class.
