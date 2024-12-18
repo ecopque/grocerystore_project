@@ -56,6 +56,14 @@ class CategoryController:
             for i in read_category:
                 if i.category == categorychanged:
                     cat1.append(i)
+            
+            if len(cat) == 0:
+                ...
+            else:
+                print('The category you want to change already exists.')
+        
+        else:
+            print('The category you want to change does not exists.')
 
 
 registration_test = CategoryController()
