@@ -41,27 +41,29 @@ class CategoryController:
                         file.writelines(i.category)
                         file.writelines('\n')
 
-    def change(self, changecategory, categorychanged):
+    def change(self, changecategory, newcategory):
         read_category = CategoryDao.read()
 
         # cat = list(filter(lambda read_category: read_category.category == changecategory, read_category))
-        cat = []
+        cat1 = []
         for i in read_category:
             if i.category == changecategory:
-                cat.append(i)
+                cat1.append(i)
         
-        if len(cat) > 0:
-            # cat1 = list(filter(lambda read_category: read_category.category == categorychanged, read_category))
-            cat1 = []
+        if len(cat1) > 0:
+            # cat1 = list(filter(lambda read_category: read_category.category == newcategory, read_category))
+            cat2 = []
             for i in read_category:
-                if i.category == categorychanged:
-                    cat1.append(i)
+                if i.category == newcategory:
+                    cat2.append(i)
             
-            if len(cat) == 0:
-                ...
+            if len(cat2) == 0:
+                # read_category = list(map(lambda read_category: CategoryModel(newcategory) if (read_category.category == changecategory) else (read_category), read_category))
+                for i in range(len(read_category)):
+                    if read_category[i].category == changecategory:
+                        read_category[i] = CategoryModel(newcategory)
             else:
                 print('The category you want to change already exists.')
-        
         else:
             print('The category you want to change does not exists.')
 
