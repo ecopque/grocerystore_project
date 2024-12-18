@@ -27,16 +27,16 @@ class CategoryController:
             if i.category == removecategory:
                 cat.append(i)
     
-        if len(cat) <= 0:
+        if len(cat) == 0:
             print('The category you want to remove does not exist.')
+        
         else:
             for i in range(len(read_category)):
-                if read_category[i] == removecategory:
+                if read_category[i].category == removecategory:
                     del read_category[i]
-                    break
-                print('Category removed successfully.')
+            print('Category removed successfully.')
                
-                with open('hd_category.txt', 'w') as file:
+            with open('hd_category.txt', 'w') as file:
                     for i in read_category:
                         file.writelines(i.category)
                         file.writelines('\n')
@@ -44,7 +44,7 @@ class CategoryController:
     def change(self, changecategory, newcategory):
         read_category = CategoryDao.read()
 
-        # cat = list(filter(lambda read_category: read_category.category == changecategory, read_category))
+        # cat1 = list(filter(lambda read_category: read_category.category == changecategory, read_category))
         cat1 = []
         for i in read_category:
             if i.category == changecategory:
@@ -67,6 +67,14 @@ class CategoryController:
         else:
             print('The category you want to change does not exists.')
 
+        with open('hd_category', 'w') as file:
+            for i in read_category:
+                file.writelines(i.category)
+                file.writelines('\n')
+
 
 registration_test = CategoryController()
 registration_test.register('Cold cuts') #10:
+
+remove_test = CategoryController()
+remove_test.remove('Z')

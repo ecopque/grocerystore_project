@@ -199,10 +199,10 @@ class CustomerDao:
                 customer_hd.append(CustomerModel(i[0], i[1], i[2], i[3], i[4]))
             return customer_hd
 
-CategoryDao.save('Fruits')
-CategoryDao.save('Vegetables')
-CategoryDao.save('Legumes')
-CategoryDao.read() #4:
+# CategoryDao.save('Fruits')
+# CategoryDao.save('Vegetables')
+# CategoryDao.save('Legumes')
+# CategoryDao.read() #4:
 
 p1_product = ProductModel('bean', 7, 'Legumes')
 p1_sale = SalesModel(p1_product, 'Edson', 'Théo', 3)
