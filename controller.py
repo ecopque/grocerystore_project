@@ -31,7 +31,7 @@ class CategoryController:
             print('The category you want to remove does not exist.')
         
         else:
-            for i in range(len(read_category)):
+            for i in range(len(read_category) -1, -1, -1): #12:
                 if read_category[i].category == removecategory:
                     del read_category[i]
             print('Category removed successfully.')

@@ -1,5 +1,11 @@
 Vegetables
 Cold cuts
-Legumes
 X
 Y
+Fruits
+Vegetables
+Fruits
+Vegetables
+Fruits
+Vegetables
+Legumes
