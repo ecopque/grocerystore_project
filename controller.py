@@ -23,12 +23,12 @@ class CategoryController:
 
         # cat = list(filter(lambda read_category: read_category.category == removecategory, read_category))
 
-        cat = []
+        hd_compare_cat = []
         for i1 in categorydao_read:
             if i1.category == removecategory:
-                cat.append(i1)
+                hd_compare_cat.append(i1)
     
-        if len(cat) == 0:
+        if len(hd_compare_cat) == 0:
             print('The category you want to remove does not exist.')
         
         else:
@@ -45,21 +45,21 @@ class CategoryController:
         categorydao_read = CategoryDao.read()
 
         # cat1 = list(filter(lambda read_category: read_category.category == changecategory, read_category))
-        cat1 = []
+        hd_compare_cat = []
         for i1 in categorydao_read:
             if i1.category == changecategory:
-                cat1.append(i1)
+                hd_compare_cat.append(i1)
         
-        if len(cat1) > 0:
+        if len(hd_compare_cat) > 0:
 
             # cat2 = list(filter(lambda read_category: read_category.category == newcategory, read_category))
             
-            cat2 = []
+            hd_compare_cat2 = []
             for i2 in categorydao_read:
                 if i2.category == newcategory:
-                    cat2.append(i2)
+                    hd_compare_cat2.append(i2)
             
-            if len(cat2) == 0:
+            if len(hd_compare_cat2) == 0:
 
                 # read_category = list(map(lambda read_category: CategoryModel(newcategory) if (read_category.category == changecategory) else (read_category), read_category))
                 
