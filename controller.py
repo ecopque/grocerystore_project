@@ -116,7 +116,33 @@ class StockController:
         else:
             print('Category does not exist.')
 
+    def remove(self, name):
+        stockdao_read = StockDao.read()
 
+        hd_compare_name = []
+        for i1 in stockdao_read:
+            if i1.product.name == name:
+                hd_compare_name.append(i1)
+
+        if len(hd_compare_name) > 0:
+            for i2 in range(len(stockdao_read)):
+                if stockdao_read[i2].product.name == name:
+                    del stockdao_read[i2]
+                    break
+            print('Product removed successfully.')
+            
+        else:
+            print('The product you want to remove does not exist.')
+
+        with open('hd_stock.txt', 'w') as file:
+            for i3 in stockdao_read:
+                file.writelines(i3.product.name + '|' + 
+                            str(i3.product.price) + '|' + 
+                            i3.product.category + '|' + 
+                            str(i3.quantity))
+                file.writelines('\n')
+
+                
 # registration_test = CategoryController()
 # registration_test.register('Cold cuts') #10:
 
@@ -126,8 +152,11 @@ class StockController:
 # change_category = CategoryController()
 # change_category.change('Vegetables', 'Naturals')
 
-show_category = CategoryController()
-show_category.showcategory()
+# show_category = CategoryController()
+# show_category.showcategory()
 
-show_register = StockController()
-show_register.register('banana', 15, 'Fruits', 100)
+# show_register = StockController()
+# show_register.register('banana', 15, 'Fruits', 100)
+
+remove_stockcontroller = StockController()
+remove_stockcontroller.remove('banana')
