@@ -83,10 +83,16 @@ class CategoryController:
         for i in categorydao_read:
             print(f'Categorie: {i.category}.')
     
-class StockController:
-    def register(self, name, price, category, quantity):
-        stockdao_read = StockDao.read()
-        categorydao_read = CategoryDao.read()
+# class StockController:
+#     def register(self, name, price, category, quantity):
+#         stockdao_read = StockDao.read()
+#         categorydao_read = CategoryDao.read()
+
+#         h = list(filter(lambda stockdao_read: stockdao_read.category == category, stockdao_read))
+#         est = list(filter(lambda stockdao_read: stockdao_read.product.name == name, categorydao_read))
+
+        
+
     
 
 

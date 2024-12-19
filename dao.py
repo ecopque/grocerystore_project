@@ -51,10 +51,10 @@ class SalesDao:
             cls.sale[i] = cls.sale[i].split('|')
         print(cls.sale) #6:
 
-        sale_hd = []
+        hd_sale = []
         for i in cls.sale:
-            sale_hd.append(SalesModel(ProductModel(i[0], float(i[1]), i[2]), i[3], i[4], int(i[5]), i[6]))
-        return sale_hd
+            hd_sale.append(SalesModel(ProductModel(i[0], float(i[1]), i[2]), i[3], i[4], int(i[5]), i[6]))
+        return hd_sale
 
 class StockDao:
     @classmethod
@@ -79,10 +79,10 @@ class StockDao:
             cls.stock[i] = cls.stock[i].split('|')
         print(cls.stock)
 
-        stock_hd = []
+        hd_stock = []
         for i in cls.stock:
-            stock_hd.append(StockModel(ProductModel(i[0], i[1], i[2]), i[3]))
-        return stock_hd
+            hd_stock.append(StockModel(ProductModel(i[0], i[1], i[2]), i[3]))
+        return hd_stock
 
 class SupplierDao:
     @classmethod
@@ -106,10 +106,10 @@ class SupplierDao:
         for i in range(len(cls.supplier)):
             cls.supplier[i] = cls.supplier[i].split('|')
 
-        supplier_hd = []
+        hd_supplier = []
         for i in cls.supplier:
-            supplier_hd.append(SupplierModel(i[0], i[1], i[2], i[3]))
-        return supplier_hd
+            hd_supplier.append(SupplierModel(i[0], i[1], i[2], i[3]))
+        return hd_supplier
 
 class PersonDao:
     @classmethod
@@ -135,10 +135,10 @@ class PersonDao:
             cls.person[i] = cls.person[i].split('|')
         print(cls.person)
 
-        person_hd = []
+        hd_person = []
         for i in cls.person:
-            person_hd.append(PersonModel(i[0], i[1], i[2], i[3], i[4]))
-        return person_hd
+            hd_person.append(PersonModel(i[0], i[1], i[2], i[3], i[4]))
+        return hd_person
     
 class EmployeeDao:
     @classmethod
@@ -165,10 +165,10 @@ class EmployeeDao:
             cls.employee[i] = cls.employee[i].split('|')
         print(cls.employee)
 
-        employee_hd = []
+        hd_employee = []
         for i in cls.employee:
-            employee_hd.append(EmployeeModel(i[0], i[1], i[2], i[3], i[4], i[5]))
-        return employee_hd
+            hd_employee.append(EmployeeModel(i[0], i[1], i[2], i[3], i[4], i[5]))
+        return hd_employee
 
 class CustomerDao:
     @classmethod
@@ -194,10 +194,10 @@ class CustomerDao:
                 cls.customer[i] = cls.customer[i].split('|')
             print(cls.customer)
 
-            customer_hd = []
+            hd_customer = []
             for i in cls.customer:
-                customer_hd.append(CustomerModel(i[0], i[1], i[2], i[3], i[4]))
-            return customer_hd
+                hd_customer.append(CustomerModel(i[0], i[1], i[2], i[3], i[4]))
+            return hd_customer
 
 CategoryDao.save('Fruits')
 CategoryDao.save('Vegetables')
