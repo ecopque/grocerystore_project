@@ -44,11 +44,11 @@ class PersonModel:
 class EmployeeModel(PersonModel):
     def __init__(self, clt, name, telephone, cpf, email, address):
         self.clt = clt
-        super(EmployeeModel, self).__init__(name, telephone, cpf, email, address)
+        super(EmployeeModel, self).__init__(name, telephone, cpf, email, address) ##
 
 class CustomerModel(PersonModel):
     def __init__(self, name, telephone, cpf, email, address):
-        super(EmployeeModel, self).__init__(name, telephone, cpf, email, address)
+        super(PersonModel, self).__init__(name, telephone, cpf, email, address) ##
 
 
 # Edson Copque | https://linktr.ee/edsoncopque

@@ -181,7 +181,7 @@ class CustomerDao:
                             customer.address)
             file.writelines('\n')
     
-    classmethod
+    @classmethod
     def read(cls):
         with open('customer.txt', 'r') as file:
             cls.customer = file.readlines()
@@ -199,20 +199,23 @@ class CustomerDao:
                 hd_customer.append(CustomerModel(i[0], i[1], i[2], i[3], i[4]))
             return hd_customer
 
-CategoryDao.save('Fruits')
-CategoryDao.save('Vegetables')
-CategoryDao.save('Legumes')
-CategoryDao.read() #4:
+# CategoryDao.save('Fruits')
+# CategoryDao.save('Vegetables')
+# CategoryDao.save('Legumes')
+# CategoryDao.read() #4:
 
-p1_product = ProductModel('bean', 7, 'Legumes')
-p1_sale = SalesModel(p1_product, 'Edson', 'Théo', 3)
-SalesDao.save(p1_sale)
-SalesDao.read() # (#5, #6)
+# p1_product = ProductModel('bean', 7, 'Legumes')
+# p1_sale = SalesModel(p1_product, 'Edson', 'Théo', 3)
+# SalesDao.save(p1_sale)
+# SalesDao.read() # (#5, #6)
 
-x = SalesDao.read()
-print(x[0].buyer) #7:
-print(x[0].items_sold.name) #8:
-print(x[0].items_sold.price) #9:
+stockdao = StockDao()
+stockdao.read()
+
+# x = SalesDao.read()
+# print(x[0].buyer) #7:
+# print(x[0].items_sold.name) #8:
+# print(x[0].items_sold.price) #9:
 
 
 # Edson Copque | https://linktr.ee/edsoncopque

@@ -187,6 +187,16 @@ class StockController:
         else:
             print('The category provided does not exist.')
 
+    def showstock(self):
+        stockdao_read = StockDao.read()
+        
+        if len(stockdao_read) == 0:
+            print('Empty stock.')
+        
+        else:
+            for i1 in stockdao_read:
+                print(f'Name: {i1.product.name}, Price: {i1.product.price}, Category: {i1.product.category}, Quantity: {i1.quantity}.')
+
                 
 # registration_test = CategoryController()
 # registration_test.register('Cold cuts') #10:
@@ -206,5 +216,8 @@ class StockController:
 # remove_stockcontroller = StockController()
 # remove_stockcontroller.remove('banana')
 
-alterar_produto = StockController()
-alterar_produto.change('banana', 'maçã', 150, 'Fruits', 666)
+# alterar_produto = StockController()
+# alterar_produto.change('maçã', 'banana', 150, 'Fruits', 666)
+
+show_stock = CategoryController()
+show_stock.showcategory()
