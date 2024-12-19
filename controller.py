@@ -142,6 +142,51 @@ class StockController:
                             str(i3.quantity))
                 file.writelines('\n')
 
+    def change(self, nameOld, nameNew, priceNew, categoryNew, quantityNew):
+        categorydao_read = CategoryDao.read()
+        stockdao_read = StockDao.read()
+
+        # hd_compare_cat = list(filter(lambda x: x.category == categoryNew, categorydao_read))
+        hd_compare_cat = []
+        for i1 in categorydao_read:
+            if i1.category == categoryNew:
+                hd_compare_cat.append(i1)
+
+        if len(hd_compare_cat) > 0:
+            # hd_compare_name = list(filter(lambda x: x.product.name == nameOld, stockdao_read))
+            hd_compare_name = []
+            for i2 in stockdao_read:
+                if i2.product.name == nameOld:
+                    hd_compare_name.append(i2)
+            
+            if len(hd_compare_name) > 0:
+                # hd_compare_name = list(filter(lambda x: x.product.name == nameNew, stockdao_read))
+                hd_compare_name = []
+                for i3 in stockdao_read:
+                    if i3.product.name == nameNew:
+                        hd_compare_name.append(i3)
+
+                if len(hd_compare_name) == 0:
+                    # stockdao_read = list(map(lambda x: StockModel(ProductModel(nameNew, priceNew, categoryNew), quantityNew) if(x.product.name == nameOld) else (x), stockdao_read))
+                    for i4 in range(len(stockdao_read)):
+                        if stockdao_read[i4].product.name == nameOld:
+                            stockdao_read[i4] = StockModel(ProductModel(nameNew, priceNew, categoryNew), quantityNew)
+                    print('Product changed successfully.')
+                else:
+                    print('Product already registered.')
+            else:
+                print('The product you want to change does not exist.')
+
+            with open('hd_stock.txt', 'w') as file:
+                for i5 in stockdao_read:
+                    file.writelines(i5.product.name + '|' + 
+                            str(i5.product.price) + '|' + 
+                            i5.product.category + '|' + 
+                            str(i5.quantity))
+                    file.writelines('\n')
+        else:
+            print('The category provided does not exist.')
+
                 
 # registration_test = CategoryController()
 # registration_test.register('Cold cuts') #10:
@@ -158,5 +203,8 @@ class StockController:
 # show_register = StockController()
 # show_register.register('banana', 15, 'Fruits', 100)
 
-remove_stockcontroller = StockController()
-remove_stockcontroller.remove('banana')
+# remove_stockcontroller = StockController()
+# remove_stockcontroller.remove('banana')
+
+alterar_produto = StockController()
+alterar_produto.change('banana', 'maçã', 150, 'Fruits', 666)
