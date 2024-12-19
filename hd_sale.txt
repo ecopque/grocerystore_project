@@ -1,4 +1,3 @@
-bean|7|Legumes|Edson|Théo|3|16/12/2024bean|7|Legumes|Edson|Théo|3|18/12/2024
 bean|7|Legumes|Edson|Théo|3|18/12/2024
 bean|7|Legumes|Edson|Théo|3|18/12/2024
 bean|7|Legumes|Edson|Théo|3|18/12/2024
@@ -22,5 +21,8 @@ bean|7|Legumes|Edson|Théo|3|18/12/2024
 bean|7|Legumes|Edson|Théo|3|18/12/2024
 bean|7|Legumes|Edson|Théo|3|18/12/2024
 bean|7|Legumes|Edson|Théo|3|18/12/2024
+bean|7|Legumes|Edson|Théo|3|19/12/2024
+bean|7|Legumes|Edson|Théo|3|19/12/2024
+bean|7|Legumes|Edson|Théo|3|19/12/2024
 bean|7|Legumes|Edson|Théo|3|19/12/2024
 bean|7|Legumes|Edson|Théo|3|19/12/2024

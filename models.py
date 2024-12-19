@@ -2,22 +2,22 @@
 
 from datetime import datetime
 
-class CategoryModel: # class: CategoryDao
+class CategoryModel:
     def __init__(self, category):
         self.category = category
 
-class ProductModel: # class: StockDao, SalesDao
+class ProductModel:
     def __init__(self, name, price, category):
         self.name = name
         self.price = price
         self.category = category
 
-class StockModel: # class: StockDao
+class StockModel:
     def __init__(self, product: ProductModel, quantity):
         self.product = product
         self.quantity = quantity
 
-class SalesModel: # class: SalesDao
+class SalesModel:
     def __init__(self, items_sold: ProductModel, seller, buyer, quantity_sold, date = datetime.now().strftime('%d/%m/%Y')):
         self.items_sold = items_sold
         self.product = ProductModel
@@ -26,14 +26,14 @@ class SalesModel: # class: SalesDao
         self.quantity_sold = quantity_sold
         self.date = date
 
-class SupplierModel: # class: SupplierDao
+class SupplierModel:
     def __init__(self, name, cnpj, telephone, category):
         self.name = name
         self.cnpj = cnpj
         self.telephone = telephone
         self.category = category
 
-class PersonModel: # class: PersonDao
+class PersonModel:
     def __init__(self, name, telephone, cpf, email, address):
         self.name = name
         self.telephone = telephone
@@ -41,12 +41,12 @@ class PersonModel: # class: PersonDao
         self.email = email
         self.address = address
 
-class EmployeeModel(PersonModel): # class: EmployeeDao
+class EmployeeModel(PersonModel):
     def __init__(self, clt, name, telephone, cpf, email, address):
         self.clt = clt
         super(EmployeeModel, self).__init__(name, telephone, cpf, email, address)
 
-class CustomerModel(PersonModel): # class: CustomerDao
+class CustomerModel(PersonModel):
     def __init__(self, name, telephone, cpf, email, address):
         super(EmployeeModel, self).__init__(name, telephone, cpf, email, address)
 
