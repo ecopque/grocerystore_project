@@ -194,6 +194,7 @@ class StockController:
             print('Empty stock.')
         
         else:
+            print('PRODUCTS: ')
             for i1 in stockdao_read:
                 print(f'Name: {i1.product.name}, Price: {i1.product.price}, Category: {i1.product.category}, Quantity: {i1.quantity}.')
 
@@ -219,5 +220,5 @@ class StockController:
 # alterar_produto = StockController()
 # alterar_produto.change('maçã', 'banana', 150, 'Fruits', 666)
 
-show_stock = CategoryController()
-show_stock.showcategory()
+show_stock = StockController()
+show_stock.showstock()
