@@ -21,7 +21,7 @@ class CategoryController:
     def remove(self, removecategory):
         categorydao_read = CategoryDao.read()
 
-        # cat = list(filter(lambda read_category: read_category.category == removecategory, read_category))
+        # hd_compare_cat = list(filter(lambda read_category: read_category.category == removecategory, read_category))
 
         hd_compare_cat = []
         for i1 in categorydao_read:
@@ -44,7 +44,7 @@ class CategoryController:
     def change(self, changecategory, newcategory):
         categorydao_read = CategoryDao.read()
 
-        # cat1 = list(filter(lambda read_category: read_category.category == changecategory, read_category))
+        # hd_compare_cat = list(filter(lambda read_category: read_category.category == changecategory, read_category))
         hd_compare_cat = []
         for i1 in categorydao_read:
             if i1.category == changecategory:
@@ -52,7 +52,7 @@ class CategoryController:
         
         if len(hd_compare_cat) > 0:
 
-            # cat2 = list(filter(lambda read_category: read_category.category == newcategory, read_category))
+            # hd_compare_cat2 = list(filter(lambda read_category: read_category.category == newcategory, read_category))
             
             hd_compare_cat2 = []
             for i2 in categorydao_read:
