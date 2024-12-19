@@ -61,7 +61,7 @@ class StockDao:
     def save(cls, product: ProductModel, quantity):
         with open('hd_stock.txt', 'a') as file:
             file.writelines(product.name + '|' + 
-                            product.price + '|' + 
+                            str(product.price) + '|' + 
                             product.category + '|' + 
                             str(quantity))
             file.writelines('\n')
