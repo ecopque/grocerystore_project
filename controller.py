@@ -35,12 +35,11 @@ class CategoryController:
                 if read_category[i].category == removecategory:
                     del read_category[i]
             print('Category removed successfully.')
-               
+        #TODO: Put uncategorized in stock
             with open('hd_category.txt', 'w') as file:
                     for i in read_category:
                         file.writelines(i.category)
                         file.writelines('\n')
-
     def change(self, changecategory, newcategory):
         read_category = CategoryDao.read()
 
@@ -63,6 +62,7 @@ class CategoryController:
                     if read_category[i].category == changecategory:
                         read_category[i].category = newcategory
                 print(f"Category '{changecategory}' changed to '{newcategory}' successfully.")
+                #TODO: Change stock category.
             else:
                 print(f"The category '{newcategory}' already exists.")
         else:
@@ -82,6 +82,8 @@ class CategoryController:
         
         for i in categories:
             print(f'Categorie: {i.category}.')
+    
+    
 
 
 # registration_test = CategoryController()
