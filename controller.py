@@ -51,7 +51,7 @@ class CategoryController:
                 cat1.append(i)
         
         if len(cat1) > 0:
-            # cat1 = list(filter(lambda read_category: read_category.category == newcategory, read_category))
+            # cat2 = list(filter(lambda read_category: read_category.category == newcategory, read_category))
             cat2 = []
             for i in read_category:
                 if i.category == newcategory:
@@ -61,20 +61,24 @@ class CategoryController:
                 # read_category = list(map(lambda read_category: CategoryModel(newcategory) if (read_category.category == changecategory) else (read_category), read_category))
                 for i in range(len(read_category)):
                     if read_category[i].category == changecategory:
-                        read_category[i] = CategoryModel(newcategory)
+                        read_category[i].category = newcategory
+                print(f"Category '{changecategory}' changed to '{newcategory}' successfully.")
             else:
-                print('The category you want to change already exists.')
+                print(f"The category '{newcategory}' already exists.")
         else:
-            print('The category you want to change does not exists.')
+           print(f"The category '{newcategory}' you want to change does not exist.")
 
-        with open('hd_category', 'w') as file:
+        with open('hd_category.txt', 'w') as file:
             for i in read_category:
                 file.writelines(i.category)
                 file.writelines('\n')
 
 
-registration_test = CategoryController()
-registration_test.register('Cold cuts') #10:
+# registration_test = CategoryController()
+# registration_test.register('Cold cuts') #10:
 
-remove_test = CategoryController()
-remove_test.remove('Z')
+# remove_test = CategoryController()
+# remove_test.remove('Z')
+
+change_category = CategoryController()
+change_category.change('Vegetables', 'Naturals')
