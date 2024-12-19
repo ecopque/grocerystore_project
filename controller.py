@@ -73,6 +73,16 @@ class CategoryController:
                 file.writelines(i.category)
                 file.writelines('\n')
 
+    def showcategory(self):
+        categories = CategoryDao.read()
+
+        if len(categories) == 0:
+            print('There are no registered categories.')
+            return 0
+        
+        for i in categories:
+            print(f'Categorie: {i.category}.')
+
 
 # registration_test = CategoryController()
 # registration_test.register('Cold cuts') #10:
@@ -80,5 +90,8 @@ class CategoryController:
 # remove_test = CategoryController()
 # remove_test.remove('Z')
 
-change_category = CategoryController()
-change_category.change('Vegetables', 'Naturals')
+# change_category = CategoryController()
+# change_category.change('Vegetables', 'Naturals')
+
+show_category = CategoryController()
+show_category.showcategory()
