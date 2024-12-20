@@ -225,3 +225,5 @@ class SalesController:
 
 show_stock = StockController()
 show_stock.showstock()
+
+# https://linktr.ee/edsoncopque
