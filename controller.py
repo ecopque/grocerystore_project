@@ -211,7 +211,25 @@ class SalesController:
             if product_stock == False:
                 if i1.product.name == nameProduct:
                     product_stock = True
+                    if i1.quantity >= quantity_sold:
+                        quantity_stock = True
+                        i1.quantity = int(i1.quantity) - int(quantity_sold)
+                        
+                        # see StockDao.read()
+                        # i1 = StockModel instance.
+                        # i1.product = ProductModel instance.
+                        solded = SalesModel(ProductModel(i1.product.name, 
+                                                         i1.product.price, 
+                                                         i1.product.category), 
+                                                         seller, buyer, quantity_sold)
+                        purchase_value = int(quantity_sold) * float(i1.product.price)
+                        
+                        SalesDao.save(solded)
 
+            hd.append(ProductModel(i1.product.name, 
+                                   i1.product.price, 
+                                   i1.product.category), 
+                                   i1.quantity)
 
                 
 # registration_test = CategoryController()
