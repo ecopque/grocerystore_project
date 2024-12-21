@@ -203,14 +203,14 @@ class SalesController:
     def register(self, nameProduct, seller, buyer, quantity_sold):
         stockdao = StockDao.read()
         
-        hd = []
-        product_stock = False #14:
+        hd_temp = []
+        product_exist = False #14:
         quantity_stock = False #13:
 
         for i1 in stockdao:
-            if product_stock == False:
+            if product_exist == False:
                 if i1.product.name == nameProduct:
-                    product_stock = True
+                    product_exist = True
                     if i1.quantity >= quantity_sold:
                         quantity_stock = True
                         i1.quantity = int(i1.quantity) - int(quantity_sold)
@@ -226,10 +226,32 @@ class SalesController:
                         
                         SalesDao.save(solded)
 
-            hd.append(ProductModel(i1.product.name, 
+            hd_temp.append(ProductModel(i1.product.name, 
                                    i1.product.price, 
                                    i1.product.category), 
                                    i1.quantity)
+
+            file = open('hd_stock.txt', 'w')
+            file.write('')
+
+            # [[Product('name', 'price', 'category'), quantity]]
+            for i2 in hd_temp:
+                with open('hd_stock.txt', 'a') as file:
+                    file.writelines(i2[0].name + '|' + 
+                                    i2[0].price + '|' + 
+                                    i2[0].category + '|' + 
+                                    str(i2[1]))
+                    file.writelines('\n')
+
+            if product_exist == False:
+                print('The product does not exist.')
+                return None
+            elif not quantity_stock:
+                print('The quantity sold is not in stock.')
+
+
+
+
 
                 
 # registration_test = CategoryController()
