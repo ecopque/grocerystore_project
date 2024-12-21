@@ -200,7 +200,18 @@ class StockController:
 
 #TODO: Launch on mind map
 class SalesController:
-    ...
+    def register(self, nameProduct, seller, buyer, quantity_sold):
+        stockdao = StockDao.read()
+        
+        hd = []
+        product_stock = False #14:
+        quantity_stock = False #13:
+
+        for i1 in stockdao:
+            if product_stock == False:
+                if i1.product.name == nameProduct:
+                    product_stock = True
+
 
                 
 # registration_test = CategoryController()

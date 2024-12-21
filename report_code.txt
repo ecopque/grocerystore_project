@@ -23,3 +23,7 @@
 #11: Here, 'i' is an object of 'CategoryModel' class, which was created inside the read method of the 'CategoryDao' class. When the code gets to the line of 'if i.category == newcategory', it is accessing the category attribute of that 'CategoryModel' instance.
 
 #12: I had to use '-1, -1, -1' to make the iteration start backwards, as I was getting an error. This occurred when I tried to access an index that is outside the range of the list. In this case, the error is happening inside the removal loop. This is probably because I removed elements from the list while iterating through it, which changes the access indexes, causing the code to try to access an invalid index after removing an item.
+
+#13: If the product exists but there is not enough quantity.
+
+#14: Yes or not. 
