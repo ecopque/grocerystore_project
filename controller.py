@@ -78,7 +78,7 @@ class CategoryController:
                 file.writelines(i4.category)
                 file.writelines('\n')
 
-    def showcategory(self):
+    def show(self):
         categorydao_read = CategoryDao.read()
 
         if len(categorydao_read) == 0:
@@ -187,7 +187,7 @@ class StockController:
         else:
             print('The category provided does not exist.')
 
-    def showstock(self):
+    def show(self):
         stockdao_read = StockDao.read()
         
         if len(stockdao_read) == 0:
@@ -198,6 +198,7 @@ class StockController:
             for i1 in stockdao_read:
                 print(f'Name: {i1.product.name}, Price: {i1.product.price}, Category: {i1.product.category}, Quantity: {i1.quantity}.')
 
+#TODO: Launch on mind map
 class SalesController:
     ...
 
@@ -224,6 +225,6 @@ class SalesController:
 # alterar_produto.change('maçã', 'banana', 150, 'Fruits', 666)
 
 show_stock = StockController()
-show_stock.showstock()
+show_stock.show()
 
 # https://linktr.ee/edsoncopque
