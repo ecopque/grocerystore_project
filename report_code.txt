@@ -26,4 +26,4 @@
 
 #13: If the product exists but there is not enough quantity.
 
-#14: Yes or not. 
+#14: If the product exists. Yes or not. 
