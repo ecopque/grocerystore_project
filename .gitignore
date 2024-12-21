@@ -154,6 +154,8 @@ gunicorn.env
 nginx-http.env
 nginx-https.env
 /files_lesson
+*.mm
+.mm
 
 
-# https://linktr.ee/edsoncopque
+# Edson Copque | https://linktr.ee/edsoncopque
