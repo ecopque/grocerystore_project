@@ -1,1 +1,1 @@
-banana|150|Fruits|666
+banana|150|Fruits|600

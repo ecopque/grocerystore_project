@@ -226,10 +226,10 @@ class SalesController:
                         
                         SalesDao.save(solded)
 
-            hd_temp.append(ProductModel(i1.product.name, 
+            hd_temp.append([ProductModel(i1.product.name, 
                                    i1.product.price, 
                                    i1.product.category), 
-                                   i1.quantity)
+                                   i1.quantity]) #16:
 
             file = open('hd_stock.txt', 'w')
             file.write('')
@@ -246,8 +246,12 @@ class SalesController:
             if product_exist == False:
                 print('The product does not exist.')
                 return None
-            elif not quantity_stock:
+            elif not quantity_stock: #15:
                 print('The quantity sold is not in stock.')
+                return None
+            else:
+                print('Sale completed successfully.')
+                return purchase_value
 
 
 
@@ -275,7 +279,11 @@ class SalesController:
 # alterar_produto = StockController()
 # alterar_produto.change('maçã', 'banana', 150, 'Fruits', 666)
 
-show_stock = StockController()
-show_stock.show()
+# show_stock = StockController()
+# show_stock.show()
+
+test_register = SalesController()
+test_register.register('banana', 'Edson Copque', 'Enéas Carneiro', 66)
+
 
 # https://linktr.ee/edsoncopque
