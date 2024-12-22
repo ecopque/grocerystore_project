@@ -203,7 +203,7 @@ class SalesController:
     def register(self, nameProduct, seller, buyer, quantity_sold):
         stockdao = StockDao.read()
         
-        hd_temp = []
+        stock_temp = []
         product_exist = False #14:
         quantity_stock = False #13:
 
@@ -222,11 +222,10 @@ class SalesController:
                                                          i1.product.price, 
                                                          i1.product.category), 
                                                          seller, buyer, quantity_sold)
-                        purchase_value = int(quantity_sold) * float(i1.product.price)
-                        
                         SalesDao.save(solded)
+                        purchase_value = int(quantity_sold) * float(i1.product.price)
 
-            hd_temp.append([ProductModel(i1.product.name, 
+            stock_temp.append([ProductModel(i1.product.name, 
                                    i1.product.price, 
                                    i1.product.category), 
                                    i1.quantity]) #16:
@@ -235,7 +234,7 @@ class SalesController:
             file.write('')
 
             # [[Product('name', 'price', 'category'), quantity]]
-            for i2 in hd_temp:
+            for i2 in stock_temp:
                 with open('hd_stock.txt', 'a') as file:
                     file.writelines(i2[0].name + '|' + 
                                     i2[0].price + '|' + 
