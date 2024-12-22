@@ -31,3 +31,5 @@
 #15: If 'quantity_stock' is False, it means that either the product was not found or the available quantity is not sufficient for sale. The 'elif not quantity_stock': line will be executed only if 'quantity_stock is False', that is, if the quantity was not sufficient for sale.
 
 #16: Don't forget to use '[ ]'. I had big problems for not doing it this way.
+
+#17: if not False = True. If not True = False.
