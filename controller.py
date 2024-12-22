@@ -229,7 +229,6 @@ class SalesController:
                                    i1.product.price, 
                                    i1.product.category), 
                                    i1.quantity]) #16:
-
             file = open('hd_stock.txt', 'w')
             file.write('')
 
@@ -245,7 +244,7 @@ class SalesController:
             if product_exist == False:
                 print('The product does not exist.')
                 return None
-            elif not quantity_stock: #15:
+            elif not quantity_stock: #15: #17:
                 print('The quantity sold is not in stock.')
                 return None
             else:
