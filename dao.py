@@ -81,7 +81,7 @@ class StockDao:
 
         hd_stock = []
         for i in cls.stock:
-            hd_stock.append(StockModel(ProductModel(i[0], i[1], i[2]), i[3]))
+            hd_stock.append(StockModel(ProductModel(i[0], i[1], i[2]), int(i[3])))
         return hd_stock
 
 class SupplierDao:
