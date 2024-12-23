@@ -253,16 +253,16 @@ class SalesController:
         
     #TODO: Insert into mind map
     def report(self):
-        sales = SalesDao.read()
+        salesdao_read = SalesDao.read()
         products = []
 
-        for i1 in sales:
+        for i1 in salesdao_read:
             name = i1.items_sold.name
             quantity = i1.quantity_sold
 
             # size = list(filter(lambda x: x['product'] == name, products))
             size = []
-            for i2 in products:
+            for i2 in products: # filter
                 if i2['product'] == name:
                     size.append(i2)
  
@@ -272,14 +272,14 @@ class SalesController:
                     if i3['product'] == name:
                         i3['quantity'] = int(i3['quantity']) + int(quantity)
             else:
-                products.append({'product': name, 'quantity': int(quantity)})
+                products.append({'product': name, 'quantity': int(quantity)}) #16:
 
         # ordered = sorted(products, key=lambda k: k['quantity'], reverse=True)
         ordered = products.copy()
         for i4 in range(len(ordered)):
             for j4 in range(i4 + 1, len(ordered)):
-                if ordered[i4]['quantity'] < ordered[j4]['quantity']:
-                    ordered[i4], ordered[j4] = ordered[j4], ordered[i4]
+                if ordered[i4]['quantity'] < ordered[j4]['quantity']: #19:
+                    ordered[i4], ordered[j4] = ordered[j4], ordered[i4] #19:
 
         print('These are the best selling products: ')
         number = 1
