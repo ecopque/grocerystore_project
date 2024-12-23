@@ -251,7 +251,6 @@ class SalesController:
             print('Sale completed successfully.')
             return purchase_value
         
-    #TODO: Insert into mind map
     def report(self):
         salesdao_read = SalesDao.read()
         products = []

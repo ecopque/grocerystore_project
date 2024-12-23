@@ -26,4 +26,4 @@ class SalesController:
         
         ordered = products.copy()
         for i4 in range(len(ordered)):
-            for j4 in range(i4 + 1)
+            for j4 in range(i4 + 1, len)
