@@ -1,3 +1,8 @@
 maca|10|Fruits|Edson Copque|Enéas Carneiro|10|23/12/2024
 banana|5|Fruits|Edson Copque|Enéas Carneiro|10|23/12/2024
 maca|5|Fruits|Edson Copque|Enéas Carneiro|5|23/12/2024
+maca|5|Fruits|Edson Copque|Enéas Carneiro|5|24/12/2024
+maca|5|Fruits|Edson Copque|Enéas Carneiro|5|24/12/2024
+maca|5|Fruits|Edson Copque|Enéas Carneiro|5|25/12/2024
+maca|5|Fruits|Edson Copque|Enéas Carneiro|5|26/12/2024
+maca|5|Fruits|Edson Copque|Enéas Carneiro|5|28/12/2024

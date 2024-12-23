@@ -2,6 +2,7 @@
 
 from models import *
 from dao import *
+from datetime import datetime
 
 class CategoryController:
     def register(self, newcategory):
@@ -288,10 +289,36 @@ class SalesController:
                     f'Quantity: {i5["quantity"]}\n')
             number += 1
 
-    
+    #TODO: Add to mind map.
+    def show(self, startDate, endDate):
+        salesdao_read = SalesDao.read()
+        startdate1 = datetime.strptime(startDate, '%d/%m/%Y')
+        enddate1 = datetime.strptime(endDate, '%d/%m/%Y')
 
+        # selected_sales = list(filter(lambda x: datetime.strptime(x.date, '%d/%m/%Y') >= startdate1 and datetime.strptime(x.date, '%d/%m/%Y') <= enddate1, salesdao_read))
+        selected_sales = []
+        for i1 in salesdao_read:
+            sale_date = datetime.strptime(i1.date, '%d/%m/%Y')
+            if sale_date >= startdate1 and sale_date <= enddate1:
+                selected_sales.append(i1)
 
+        count_var = 1
+        total = 0
 
+        for i2 in selected_sales:
+            print(f'===== Sale [{count_var}] =====')
+            print(f'Name: {i2.items_sold.name}\n'
+                  f'Category: {i2.items_sold.category}\n'
+                  f'Date: {i2.date}\n'
+                  f'Quantity: {i2.quantity_sold}\n'
+                  f'Buyer: {i2.buyer}\n'
+                  f'Seller: {i2.seller}')
+            
+            total += int(i2.items_sold.price) * int(i2.quantity_sold)
+            count_var += 1
+
+        print()
+        print(f'Total sold: {total}')
 
 
 
@@ -324,8 +351,11 @@ class SalesController:
 # test_stockcontroller.register('pera', 5, 'Fruits', 100)
 # test_salescontroller = SalesController()
 # test_salescontroller.register('maca', 'Edson Copque', 'Enéas Carneiro', 5)
-test_report_salescontroller = SalesController()
-test_report_salescontroller.report()
+# test_report_salescontroller = SalesController()
+# test_report_salescontroller.report()
+
+test_salescontroller_show = SalesController()
+test_salescontroller_show.show('23/12/2024', '24/12/2024')
 
 
 # https://linktr.ee/edsoncopque
