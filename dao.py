@@ -143,7 +143,7 @@ class PersonDao:
 class EmployeeDao:
     @classmethod
     def save(cls, employee: EmployeeModel):
-        with open('employee.txt', 'a') as file:
+        with open('hd_employee.txt', 'a') as file:
             file.writelines(employee.clt + '|' +
                             employee.name + '|' +
                             employee.telephone + '|' +
@@ -154,7 +154,7 @@ class EmployeeDao:
 
     @classmethod
     def read(cls):
-        with open('employee.txt', 'r') as file:
+        with open('hd_employee.txt', 'r') as file:
             cls.employee = file.readlines()
 
         for i in range(len(cls.employee)):
@@ -173,7 +173,7 @@ class EmployeeDao:
 class CustomerDao:
     @classmethod
     def save(cls, customer: CustomerModel):
-        with open('customer.txt', 'a') as file:
+        with open('hd_customer.txt', 'a') as file:
             file.writelines(customer.name + '|' +
                             customer.telephone + '|' +
                             customer.cpf + '|' +
@@ -183,7 +183,7 @@ class CustomerDao:
     
     @classmethod
     def read(cls):
-        with open('customer.txt', 'r') as file:
+        with open('hd_customer.txt', 'r') as file:
             cls.customer = file.readlines()
 
             for i in range(len(cls.customer)):

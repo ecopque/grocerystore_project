@@ -278,15 +278,17 @@ class SalesController:
         for i4 in range(len(ordered)):
             for j4 in range(i4 + 1, len(ordered)):
                 if ordered[i4]['quantity'] < ordered[j4]['quantity']: #19:
-                    ordered[i4], ordered[j4] = ordered[j4], ordered[i4] #19:
+                    ordered[i4], ordered[j4] = ordered[j4], ordered[i4] #19: # bubble sort
 
         print('These are the best selling products: ')
         number = 1
-        for i2 in ordered:
+        for i5 in ordered:
             print(f'===== PRODUCT [{number}] =====')
-            print(f'Product: {i2["product"]}\n'
-                    f'Quantity: {i2["quantity"]}\n')
+            print(f'Product: {i5["product"]}\n'
+                    f'Quantity: {i5["quantity"]}\n')
             number += 1
+
+    
 
 
 
