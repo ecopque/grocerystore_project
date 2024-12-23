@@ -224,31 +224,71 @@ class SalesController:
                         SalesDao.save(solded)
                         purchase_value = int(quantity_sold) * float(i1.product.price)
 
-            stock_temp.append([ProductModel(i1.product.name, 
+            stock_temp.append(StockModel(ProductModel(i1.product.name, 
                                    i1.product.price, 
                                    i1.product.category), 
-                                   i1.quantity]) #16:
-            file = open('hd_stock.txt', 'w')
-            file.write('')
+                                   i1.quantity))
+        
+        file = open('hd_stock.txt', 'w')
+        file.write('')
 
-            # [[Product('name', 'price', 'category'), quantity]]
-            for i2 in stock_temp:
-                with open('hd_stock.txt', 'a') as file:
-                    file.writelines(i2[0].name + '|' + 
-                                    i2[0].price + '|' + 
-                                    i2[0].category + '|' + 
-                                    str(i2[1]))
-                    file.writelines('\n')
+        # [[Product('name', 'price', 'category'), quantity]]
+        for i2 in stock_temp:
+            with open('hd_stock.txt', 'a') as file:
+                file.writelines(i2.product.name + '|' + 
+                                i2.product.price + '|' + 
+                                i2.product.category + '|' + 
+                                str(i2.quantity))
+                file.writelines('\n')
 
-            if product_exist == False:
-                print('The product does not exist.')
-                return None
-            elif not quantity_stock: #15: #17:
-                print('The quantity sold is not in stock.')
-                return None
+        if product_exist == False:
+            print('The product does not exist.')
+            return None
+        elif not quantity_stock: #15: #17:
+            print('The quantity sold is not in stock.')
+            return None
+        else:
+            print('Sale completed successfully.')
+            return purchase_value
+        
+    #TODO: Insert into mind map
+    def report(self):
+        sales = SalesDao.read()
+        products = []
+
+        for i1 in sales:
+            name = i1.items_sold.name
+            quantity = i1.quantity_sold
+
+            # size = list(filter(lambda x: x['product'] == name, products))
+            size = []
+            for i2 in products:
+                if i2['product'] == name:
+                    size.append(i2)
+ 
+            if len(size) > 0:
+                # products = list(map(lambda x: {'product': name, 'quantity': int(x['quantity']) + int(quantity)} if (x['product'] == name) else(x), products))
+                for i3 in products:
+                    if i3['product'] == name:
+                        i3['quantity'] = int(i3['quantity']) + int(quantity)
             else:
-                print('Sale completed successfully.')
-                return purchase_value
+                products.append({'product': name, 'quantity': int(quantity)})
+
+        # ordered = sorted(products, key=lambda k: k['quantity'], reverse=True)
+        ordered = products.copy()
+        for i4 in range(len(ordered)):
+            for j4 in range(i4 + 1, len(ordered)):
+                if ordered[i4]['quantity'] < ordered[j4]['quantity']:
+                    ordered[i4], ordered[j4] = ordered[j4], ordered[i4]
+
+        print('These are the best selling products: ')
+        number = 1
+        for i2 in ordered:
+            print(f'===== PRODUCT [{number}] =====')
+            print(f'Product: {i2["product"]}\n'
+                    f'Quantity: {i2["quantity"]}\n')
+            number += 1
+
 
 
 
@@ -279,8 +319,12 @@ class SalesController:
 # show_stock = StockController()
 # show_stock.show()
 
-test_register = SalesController()
-test_register.register('banana', 'Edson Copque', 'Enéas Carneiro', 66)
+# test_stockcontroller = StockController()
+# test_stockcontroller.register('pera', 5, 'Fruits', 100)
+# test_salescontroller = SalesController()
+# test_salescontroller.register('maca', 'Edson Copque', 'Enéas Carneiro', 5)
+test_report_salescontroller = SalesController()
+test_report_salescontroller.report()
 
 
 # https://linktr.ee/edsoncopque

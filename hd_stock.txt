@@ -1,1 +1,3 @@
-banana|150|Fruits|600
+maca|5|Fruits|85
+banana|5|Fruits|90
+pera|5|Fruits|100

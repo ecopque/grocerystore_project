@@ -1,1 +1,3 @@
-banana|150|Fruits|Edson Copque|Enéas Carneiro|66|21/12/2024
+maca|10|Fruits|Edson Copque|Enéas Carneiro|10|23/12/2024
+banana|5|Fruits|Edson Copque|Enéas Carneiro|10|23/12/2024
+maca|5|Fruits|Edson Copque|Enéas Carneiro|5|23/12/2024
