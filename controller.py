@@ -198,7 +198,6 @@ class StockController:
             for i1 in stockdao_read:
                 print(f'Name: {i1.product.name}, Price: {i1.product.price}, Category: {i1.product.category}, Quantity: {i1.quantity}.')
 
-#TODO: Launch on mind map
 class SalesController:
     def register(self, nameProduct, seller, buyer, quantity_sold):
         stockdao = StockDao.read()
