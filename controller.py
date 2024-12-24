@@ -318,7 +318,8 @@ class SalesController:
 
         print()
         print(f'Total sold: {total_sales}')
-
+        
+#TODO: mind map.
 class SupplierController:
     def register(self, name, cnpj, telephone, category):
         supplierdao_read = SupplierDao.read()

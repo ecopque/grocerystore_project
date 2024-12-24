@@ -210,8 +210,8 @@ class CustomerDao:
 # SalesDao.save(p1_sale)
 # SalesDao.read() # (#5, #6)
 
-stockdao = StockDao()
-stockdao.read()
+# stockdao = StockDao()
+# stockdao.read()
 
 # x = SalesDao.read()
 # print(x[0].buyer) #7:
