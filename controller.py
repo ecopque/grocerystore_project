@@ -318,7 +318,7 @@ class SalesController:
 
         print()
         print(f'Total sold: {total_sales}')
-        
+
 #TODO: mind map.
 class SupplierController:
     def register(self, name, cnpj, telephone, category):
@@ -336,7 +336,6 @@ class SupplierController:
                 SupplierDao.save(SupplierModel(name, cnpj, telephone, category))
             else:
                 print('Enter a valid CNPJ or Telephone number.')
-
 
 
 
