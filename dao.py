@@ -93,6 +93,7 @@ class SupplierDao:
                             supplier.telephone + '|' + 
                             supplier.category)
             file.writelines('\n')
+        print('Supplier registered successfully.')
 
     @classmethod
     def read(cls):
