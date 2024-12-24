@@ -319,6 +319,25 @@ class SalesController:
         print()
         print(f'Total sold: {total_sales}')
 
+class SupplierController:
+    def register(self, name, cnpj, telephone, category):
+        supplierdao_read = SupplierDao.read()
+        
+        cnpj_list = list(filter(lambda x: x.cnpj == cnpj, supplierdao_read))
+        telephone_list = list(filter(lambda x: x.telephone == telephone, supplierdao_read))
+
+        if len(cnpj_list) > 0:
+            print('The CNPJ is already exists.')
+        elif len(telephone_list) > 0:
+            print('The telephone is already exists.')
+        else:
+            if len(cnpj) == 14 and len(telephone) <= 11 and len(telephone) >= 10:
+                SupplierDao.save(SupplierModel(name, cnpj, telephone, category))
+            else:
+                print('Enter a valid CNPJ or Telephone number.')
+
+
+
 
 
                 
@@ -353,8 +372,10 @@ class SalesController:
 # test_report_salescontroller = SalesController()
 # test_report_salescontroller.report()
 
-test_salescontroller_show = SalesController()
-test_salescontroller_show.show('23/12/2024', '24/12/2024')
+# test_salescontroller_show = SalesController()
+# test_salescontroller_show.show('23/12/2024', '24/12/2024')
 
+test_suppliercontroller_register = SupplierController()
+test_suppliercontroller_register.register('Théo', '02345678000194', '1234567890', 'Security')
 
 # https://linktr.ee/edsoncopque
