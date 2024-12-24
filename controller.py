@@ -289,21 +289,20 @@ class SalesController:
                     f'Quantity: {i5["quantity"]}\n')
             number += 1
 
-    #TODO: Add to mind map.
     def show(self, startDate, endDate):
         salesdao_read = SalesDao.read()
-        startdate1 = datetime.strptime(startDate, '%d/%m/%Y')
-        enddate1 = datetime.strptime(endDate, '%d/%m/%Y')
+        startdate = datetime.strptime(startDate, '%d/%m/%Y')
+        enddate = datetime.strptime(endDate, '%d/%m/%Y')
 
         # selected_sales = list(filter(lambda x: datetime.strptime(x.date, '%d/%m/%Y') >= startdate1 and datetime.strptime(x.date, '%d/%m/%Y') <= enddate1, salesdao_read))
         selected_sales = []
         for i1 in salesdao_read:
             sale_date = datetime.strptime(i1.date, '%d/%m/%Y')
-            if sale_date >= startdate1 and sale_date <= enddate1:
+            if sale_date >= startdate and sale_date <= enddate:
                 selected_sales.append(i1)
 
         count_var = 1
-        total = 0
+        total_sales = 0
 
         for i2 in selected_sales:
             print(f'===== Sale [{count_var}] =====')
@@ -314,11 +313,11 @@ class SalesController:
                   f'Buyer: {i2.buyer}\n'
                   f'Seller: {i2.seller}')
             
-            total += int(i2.items_sold.price) * int(i2.quantity_sold)
+            total_sales += int(i2.items_sold.price) * int(i2.quantity_sold)
             count_var += 1
 
         print()
-        print(f'Total sold: {total}')
+        print(f'Total sold: {total_sales}')
 
 
 
