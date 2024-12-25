@@ -37,15 +37,18 @@ class CategoryController:
                 if categorydao_read[i2].category == removecategory:
                     del categorydao_read[i2]
             print('Category removed successfully.')
+            
         #TODO: Put uncategorized in stock
             with open('hd_category.txt', 'w') as file:
                     for i2 in categorydao_read:
                         file.writelines(i2.category)
                         file.writelines('\n')
+
     def change(self, changecategory, newcategory):
         categorydao_read = CategoryDao.read()
 
         # hd_compare_cat = list(filter(lambda read_category: read_category.category == changecategory, read_category))
+
         hd_compare_cat = []
         for i1 in categorydao_read:
             if i1.category == changecategory:
@@ -155,6 +158,7 @@ class StockController:
 
         if len(hd_compare_cat) > 0:
             # hd_compare_name = list(filter(lambda x: x.product.name == nameOld, stockdao_read))
+
             hd_compare_name = []
             for i2 in stockdao_read:
                 if i2.product.name == nameOld:
@@ -162,6 +166,7 @@ class StockController:
             
             if len(hd_compare_name) > 0:
                 # hd_compare_name = list(filter(lambda x: x.product.name == nameNew, stockdao_read))
+
                 hd_compare_name = []
                 for i3 in stockdao_read:
                     if i3.product.name == nameNew:
@@ -169,6 +174,7 @@ class StockController:
 
                 if len(hd_compare_name) == 0:
                     # stockdao_read = list(map(lambda x: StockModel(ProductModel(nameNew, priceNew, categoryNew), quantityNew) if(x.product.name == nameOld) else (x), stockdao_read))
+
                     for i4 in range(len(stockdao_read)):
                         if stockdao_read[i4].product.name == nameOld:
                             stockdao_read[i4] = StockModel(ProductModel(nameNew, priceNew, categoryNew), quantityNew)
@@ -196,6 +202,7 @@ class StockController:
         
         else:
             print('PRODUCTS: ')
+
             for i1 in stockdao_read:
                 print(f'Name: {i1.product.name}, Price: {i1.product.price}, Category: {i1.product.category}, Quantity: {i1.quantity}.')
 
@@ -218,6 +225,7 @@ class SalesController:
                         # see StockDao.read()
                         # i1 = StockModel instance.
                         # i1.product = ProductModel instance.
+
                         solded = SalesModel(ProductModel(i1.product.name, 
                                                          i1.product.price, 
                                                          i1.product.category), 
@@ -261,6 +269,7 @@ class SalesController:
             quantity = i1.quantity_sold
 
             # size = list(filter(lambda x: x['product'] == name, products))
+            
             size = []
             for i2 in products: # filter
                 if i2['product'] == name:
@@ -268,6 +277,7 @@ class SalesController:
  
             if len(size) > 0:
                 # products = list(map(lambda x: {'product': name, 'quantity': int(x['quantity']) + int(quantity)} if (x['product'] == name) else(x), products))
+
                 for i3 in products:
                     if i3['product'] == name:
                         i3['quantity'] = int(i3['quantity']) + int(quantity)
@@ -275,6 +285,7 @@ class SalesController:
                 products.append({'product': name, 'quantity': int(quantity)}) #16:
 
         # ordered = sorted(products, key=lambda k: k['quantity'], reverse=True)
+
         ordered = products.copy()
         for i4 in range(len(ordered)):
             for j4 in range(i4 + 1, len(ordered)):
@@ -295,6 +306,7 @@ class SalesController:
         enddate = datetime.strptime(endDate, '%d/%m/%Y')
 
         # selected_sales = list(filter(lambda x: datetime.strptime(x.date, '%d/%m/%Y') >= startdate1 and datetime.strptime(x.date, '%d/%m/%Y') <= enddate1, salesdao_read))
+
         selected_sales = []
         for i1 in salesdao_read:
             sale_date = datetime.strptime(i1.date, '%d/%m/%Y')
@@ -324,6 +336,7 @@ class SupplierController:
         supplierdao_read = SupplierDao.read()
 
         # cnpj_list = list(filter(lambda x: x.cnpj == cnpj, supplierdao_read))
+
         cnpj_list = []
         telephone_list = []
 
@@ -332,6 +345,7 @@ class SupplierController:
                 cnpj_list.append(i1)
 
         # telephone_list = list(filter(lambda x: x.telephone == telephone, supplierdao_read))
+
             if i1.telephone == telephone:
                 telephone_list.append(i1)
 
@@ -347,7 +361,49 @@ class SupplierController:
             else:
                 print('Enter a valid CNPJ or Telephone number.')
 
+    def change(self, nameOld, nameNew, cnpjNew, telephoneNew, categoryNew):
+        supplierdao_read = SupplierDao.read()
 
+        # data_list = list(filter(lambda x: x.name == nameOld, supplierdao_read))
+
+        data_list = []
+        for i1 in supplierdao_read:
+            if i1.name == nameOld:
+                data_list.append(i1)
+
+        if len(data_list) > 0:
+            # cnpj_list = list(filter(lambda x: x.cnpj == cnpjNew, supplierdao_read))
+
+            cnpj_list = []
+            for i2 in supplierdao_read:
+                if i2.cnpj == cnpjNew:
+                    cnpj_list.append(i2)
+            
+            if len(cnpj_list) == 0:
+                # supplier_update = list(map(lambda x: SupplierModel(nameNew, cnpjNew, telephoneNew, categoryNew) if(x.name == nameOld) else x, supplierdao_read))
+                
+                supplier_update = []
+                for i3 in supplierdao_read:
+                    if i3.name == nameOld:
+                        supplier_update.append(SupplierModel(nameNew, cnpjNew, telephoneNew, categoryNew))
+                    else:
+                        supplier_update.append(i3)
+
+            else:
+                print('The CNPJ already exists.')
+                supplier_update = supplierdao_read
+        else:
+            print('The supplier you want to change does not exists.')
+            supplier_update = supplierdao_read
+
+        with open('hd_supplier.txt', 'w') as file:
+            for i in supplier_update:
+                file.writelines(i.name + '|' +
+                                i.cnpj + '|' +
+                                i.telephone + '|' +
+                                str(i.category))
+                file.writelines('\n')
+            print('change() method executed successfully.')
 
 
                 
@@ -385,7 +441,10 @@ class SupplierController:
 # test_salescontroller_show = SalesController()
 # test_salescontroller_show.show('23/12/2024', '24/12/2024')
 
-test_suppliercontroller_register = SupplierController()
-test_suppliercontroller_register.register('Théo', '02345678000194', '1234567890', 'Security')
+# test_suppliercontroller_register = SupplierController()
+# test_suppliercontroller_register.register('Théo', '02345678000194', '1234567890', 'Security')
+
+test_suppliercontroller_change = SupplierController()
+test_suppliercontroller_change.change("Théo", "Mel", "111111111", "123123123", "Popoto")
 
 # https://linktr.ee/edsoncopque

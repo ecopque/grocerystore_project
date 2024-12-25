@@ -3,29 +3,41 @@
 from models import *
 from dao import *
 
-class SupplierController:
-    def register(self, name, cnpj, telephone, category):
-        supplierdao_read = SupplierDao.read()
 
+def change(self, nameOld, nameNew, cnpjNew, telephoneNew, categoryNew):
+    supplierdao_read = SupplierDao.read()
+
+    data_list = []
+    for x in supplierdao_read:
+        if x.name == nameOld:
+            data_list.append(x)
+
+    if len(data_list) > 0:
+        
         cnpj_list = []
-        telephone_list = []
+        for x in supplierdao_read:
+            if x.cnpj == cnpjNew:
+                cnpj_list.append(x)
 
-        for i1 in supplierdao_read:
-            if i1.cnpj == cnpj:
-                cnpj_list.append(i1)
-
-            if i1.telephone == telephone:
-                telephone_list.append(i1)
-
-        
-        if len(cnpj_list) > 0:
-            print('The CNPJ already exists.')
-        
-        elif len(telephone_list) > 0:
-            print('The Telephone already exists.')
-        
+        if len(cnpj_list) == 0:
+            supplier_update = []
+            for x in supplierdao_read:
+                if x.name == nameOld:
+                    supplier_update.append(SupplierModel(nameNew, cnpjNew, telephoneNew, categoryNew))
+                else:
+                    supplier_update.append(x)
         else:
-            if len(cnpj) == 14 and len(telephone) <= 11 and len(telephone) >= 10:
-                SupplierDao.save(SupplierModel(name, cnpj, telephone, category))
-            else:
-                print('Enter a valid CNPJ or Telephone.')
+            print('The CNPJ already exists.')
+            supplier_update = supplierdao_read
+    else:
+        print('The supplier you want to change does not exist.')
+        supplier_update = supplierdao_read
+
+    with open('hd_supplier.txt', 'w') as file:
+        for i in supplier_update:
+            file.writelines(i.name + '|' +
+                            i.cnpj + '|' +
+                            i.telephone + '|' +
+                            str(i.category))
+            file.writelines('\n')
+        print('Supplier changed successfully.')
