@@ -37,3 +37,5 @@
 #18: The use of 'i4+1' in the second loop is to avoid repeated comparisons. 'i4 + 1': This causes the second loop (for j4 in range(i4 + 1, len(ordered))) to start one index after i4. This is done to ensure that the code compares each element with the elements that come after it, and not with the ones that have already been compared.
 
 #19: If the quantity at index 'i4' is less than the quantity at index 'j4', they are swapped. This is a simple implementation of an exchange sort algorithm, also known as 'bubble sort'.
+
+#20: In this code block i can request the 'dao.py' file to save.

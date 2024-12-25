@@ -397,13 +397,22 @@ class SupplierController:
             supplier_update = supplierdao_read
 
         with open('hd_supplier.txt', 'w') as file:
-            for i in supplier_update:
-                file.writelines(i.name + '|' +
-                                i.cnpj + '|' +
-                                i.telephone + '|' +
-                                str(i.category))
+            for i3 in supplier_update:
+                file.writelines(i3.name + '|' +
+                                i3.cnpj + '|' +
+                                i3.telephone + '|' +
+                                str(i3.category))
                 file.writelines('\n')
-            print('change() method executed successfully.')
+            print(f'[{self.__class__.__name__}:{self.change.__name__}]: Method executed successfully.')
+                
+        #         open('hd_supplier.txt', 'w').close() 
+        #         for i4 in supplier_update:
+        #             SupplierDao.save(i4)
+        #         print('Supplier changed successfully.')
+        #     else:
+        #         print('The CNPJ already exists.')
+        # else:
+        #     print('The supplier you want to change does not exist.')
 
 
                 
@@ -442,9 +451,9 @@ class SupplierController:
 # test_salescontroller_show.show('23/12/2024', '24/12/2024')
 
 # test_suppliercontroller_register = SupplierController()
-# test_suppliercontroller_register.register('Théo', '02345678000194', '1234567890', 'Security')
+# test_suppliercontroller_register.register('Edson', '02385678000194', '1234967890', 'Strong')
 
 test_suppliercontroller_change = SupplierController()
-test_suppliercontroller_change.change("Théo", "Mel", "111111111", "123123123", "Popoto")
+test_suppliercontroller_change.change("Edson", "Edsuuuu", "111117831", "123333123", "Spartan")
 
 # https://linktr.ee/edsoncopque
