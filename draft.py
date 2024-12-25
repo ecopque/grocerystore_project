@@ -2,26 +2,30 @@
 
 from models import *
 from dao import *
-from datetime import datetime
 
-class SalesController:
-    def show(self, startDate, endDate):
-        salesdao_read = SalesDao.read()
-        startdate = datetime.strptime(startDate, '%d/%m/%Y')
-        enddate = datetime.strptime(endDate, '%d/%m/%Y')
+class SupplierController:
+    def register(self, name, cnpj, telephone, category):
+        supplierdao_read = SupplierDao.read()
 
-        selected_sales = []
-        for i1 in salesdao_read:
-            sale_date = datetime.strptime(i1.date, '%d/%m/%Y')
-            if sale_date >= startdate and sale_date <= enddate:
-                selected_sales.append(i1)
+        cnpj_list = []
+        telephone_list = []
 
-        count_var = 1
-        total = 0
+        for i1 in supplierdao_read:
+            if i1.cnpj == cnpj:
+                cnpj_list.append(i1)
 
-        for i2 in selected_sales:
-            print(f'===== SALE [{count_var}] =====')
-            print(f'Name: {i2.items_sold.name}\n'
-            f'')
+            if i1.telephone == telephone:
+                telephone_list.append(i1)
 
-        total = int(i2.items_sold.price) * int(i2.quantity_sold)
+        
+        if len(cnpj_list) > 0:
+            print('The CNPJ already exists.')
+        
+        elif len(telephone_list) > 0:
+            print('The Telephone already exists.')
+        
+        else:
+            if len(cnpj) == 14 and len(telephone) <= 11 and len(telephone) >= 10:
+                SupplierDao.save(SupplierModel(name, cnpj, telephone, category))
+            else:
+                print('Enter a valid CNPJ or Telephone.')

@@ -319,18 +319,28 @@ class SalesController:
         print()
         print(f'Total sold: {total_sales}')
 
-#TODO: mind map.
 class SupplierController:
     def register(self, name, cnpj, telephone, category):
         supplierdao_read = SupplierDao.read()
-        
-        cnpj_list = list(filter(lambda x: x.cnpj == cnpj, supplierdao_read))
-        telephone_list = list(filter(lambda x: x.telephone == telephone, supplierdao_read))
+
+        # cnpj_list = list(filter(lambda x: x.cnpj == cnpj, supplierdao_read))
+        cnpj_list = []
+        telephone_list = []
+
+        for i1 in supplierdao_read:
+            if i1.cnpj == cnpj:
+                cnpj_list.append(i1)
+
+        # telephone_list = list(filter(lambda x: x.telephone == telephone, supplierdao_read))
+            if i1.telephone == telephone:
+                telephone_list.append(i1)
 
         if len(cnpj_list) > 0:
             print('The CNPJ is already exists.')
+        
         elif len(telephone_list) > 0:
             print('The telephone is already exists.')
+        
         else:
             if len(cnpj) == 14 and len(telephone) <= 11 and len(telephone) >= 10:
                 SupplierDao.save(SupplierModel(name, cnpj, telephone, category))
