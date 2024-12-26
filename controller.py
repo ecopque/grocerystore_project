@@ -365,30 +365,32 @@ class SupplierController:
         supplierdao_read = SupplierDao.read()
 
         # data_list = list(filter(lambda x: x.name == nameOld, supplierdao_read))
-
-        data_list = []
+        
+        #A001:
+        name_list = [] 
         for i1 in supplierdao_read:
             if i1.name == nameOld:
-                data_list.append(i1)
+                name_list.append(i1)
 
-        if len(data_list) > 0:
+        #A002:
+        if len(name_list) > 0:
             # cnpj_list = list(filter(lambda x: x.cnpj == cnpjNew, supplierdao_read))
 
             cnpj_list = []
             for i2 in supplierdao_read:
                 if i2.cnpj == cnpjNew:
                     cnpj_list.append(i2)
-            
+
+            #A003:
             if len(cnpj_list) == 0:
                 # supplier_update = list(map(lambda x: SupplierModel(nameNew, cnpjNew, telephoneNew, categoryNew) if(x.name == nameOld) else x, supplierdao_read))
-                
+
                 supplier_update = []
                 for i3 in supplierdao_read:
                     if i3.name == nameOld:
                         supplier_update.append(SupplierModel(nameNew, cnpjNew, telephoneNew, categoryNew))
                     else:
                         supplier_update.append(i3)
-
             else:
                 print('The CNPJ already exists.')
                 supplier_update = supplierdao_read
