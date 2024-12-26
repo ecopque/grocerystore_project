@@ -367,43 +367,41 @@ class SupplierController:
         # data_list = list(filter(lambda x: x.name == nameOld, supplierdao_read))
         
         #A001:
-        name_list = [] 
+        supplier_name = [] 
         for i1 in supplierdao_read:
             if i1.name == nameOld:
-                name_list.append(i1)
+                supplier_name.append(i1)
 
-        #A002:
-        if len(name_list) > 0:
+        if len(supplier_name) > 0:
             # cnpj_list = list(filter(lambda x: x.cnpj == cnpjNew, supplierdao_read))
 
-            cnpj_list = []
+            supplier_cnpj = []
             for i2 in supplierdao_read:
                 if i2.cnpj == cnpjNew:
-                    cnpj_list.append(i2)
+                    supplier_cnpj.append(i2)
 
-            #A003:
-            if len(cnpj_list) == 0:
+            if len(supplier_cnpj) == 0:
                 # supplier_update = list(map(lambda x: SupplierModel(nameNew, cnpjNew, telephoneNew, categoryNew) if(x.name == nameOld) else x, supplierdao_read))
 
-                supplier_update = []
+                supplier_final = []
                 for i3 in supplierdao_read:
                     if i3.name == nameOld:
-                        supplier_update.append(SupplierModel(nameNew, cnpjNew, telephoneNew, categoryNew))
+                        supplier_final.append(SupplierModel(nameNew, cnpjNew, telephoneNew, categoryNew))
                     else:
-                        supplier_update.append(i3)
+                        supplier_final.append(i3)
             else:
                 print('The CNPJ already exists.')
-                supplier_update = supplierdao_read
+                supplier_final = supplierdao_read
         else:
             print('The supplier you want to change does not exists.')
-            supplier_update = supplierdao_read
+            supplier_final = supplierdao_read
 
         with open('hd_supplier.txt', 'w') as file:
-            for i3 in supplier_update:
-                file.writelines(i3.name + '|' +
-                                i3.cnpj + '|' +
-                                i3.telephone + '|' +
-                                str(i3.category))
+            for i4 in supplier_final:
+                file.writelines(i4.name + '|' +
+                                i4.cnpj + '|' +
+                                i4.telephone + '|' +
+                                str(i4.category))
                 file.writelines('\n')
             print(f'[{self.__class__.__name__}:{self.change.__name__}]: Method executed successfully.')
                 
@@ -453,9 +451,9 @@ class SupplierController:
 # test_salescontroller_show.show('23/12/2024', '24/12/2024')
 
 # test_suppliercontroller_register = SupplierController()
-# test_suppliercontroller_register.register('Edson', '02385678000194', '1234967890', 'Strong')
+# test_suppliercontroller_register.register('Edson', '02666679690194', '1224888890', 'Work')
 
 test_suppliercontroller_change = SupplierController()
-test_suppliercontroller_change.change("Edson", "Edsuuuu", "111117831", "123333123", "Spartan")
+test_suppliercontroller_change.change("Edson", "Edsuuuu", "111117831", "123338823", "Spartan")
 
 # https://linktr.ee/edsoncopque

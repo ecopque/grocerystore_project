@@ -1,7 +1,3 @@
 # File: /report_question.txt
 
-A001: How can I check if a supplier with a specific name already exists in my supplier list, and if so, add that supplier to another list for later verification or manipulation?
-
-#A002: How can I check if a supplier with the same CNPJ already exists before updating an existing supplier?
-
-#A003: How would you ensure that changing a supplier (with a new CNPJ) only happens if the CNPJ is not duplicated in the system, and keeps the other suppliers unchanged?
+A001: How can I check if a supplier with a specific name exists in my database and, if I find that supplier, also ensure that the new CNPJ provided is not being used by another supplier, before updating the supplier with the new data? Finally, update your *.txt file.
