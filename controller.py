@@ -378,7 +378,7 @@ class SupplierController:
                 if i2.cnpj == cnpjNew:
                     supplier_cnpj.append(i2)
 
-                # supplier_updated = list(map(lambda x: SupplierModel(nameNew, cnpjNew, telephoneNew, categoryNew) if(x.name == nameOld) else x, supplierdao_read))
+            # supplier_updated = list(map(lambda x: SupplierModel(nameNew, cnpjNew, telephoneNew, categoryNew) if(x.name == nameOld) else x, supplierdao_read))
             if len(supplier_cnpj) == 0:
                 for i3 in range(len(supplierdao_read)):
                     if supplierdao_read[i3].name == nameOld:
@@ -398,31 +398,33 @@ class SupplierController:
                                 str(i4.category))
                 file.writelines('\n')
 
-    # def remove(self, name):
-    #     supplierdao_read = SupplierDao.read()
+    def remove(self, name):
+        supplierdao_read = SupplierDao.read()
 
-    #     supplier_name = list(filter(lambda x: x.name == name, supplierdao_read))
+        # supplier_name = list(filter(lambda x: x.name == name, supplierdao_read))
+        supplier_name = []
+        for i1 in supplierdao_read:
+            if i1.name == name:
+                supplier_name.append(i1)
         
-    #     if len(supplier_name) > 0:
-    #         for i1 in range(len(supplierdao_read)):
-    #             if supplierdao_read[i1].name == name:
-    #                 print(f'Supplier {supplierdao_read[i1]} deleted.')
-    #                 del supplierdao_read[i1]
-    #                 break
-    #     else:
-    #         print('The supplier you want to remove does not exists.')
-    #         return None
+        if len(supplier_name) > 0:
+            for i2 in range(len(supplierdao_read)):
+                if supplierdao_read[i2].name == name:
+                    print(f'Supplier {supplierdao_read[i2].name} ({supplierdao_read[i2].cnpj}) deleted.')
+                    del supplierdao_read[i2]
+                    break
+        else:
+            print('The supplier you want to remove does not exists.')
+            return None
         
-    #     with open('hd_supplier.txt', 'w') as file:
-    #         for i2 in supplierdao_read:
-    #             file.writelines(i2.name + '|' + 
-    #                             i2.cnpj + '|' + 
-    #                             i2.telephone + '|' +
-    #                             str(i2.category))
-    #             file.writelines('\n')
-    #         print('Supplier removed successfully.')
-
-
+        with open('hd_supplier.txt', 'w') as file:
+            for i3 in supplierdao_read:
+                file.writelines(i3.name + '|' + 
+                                i3.cnpj + '|' + 
+                                i3.telephone + '|' +
+                                str(i3.category))
+                file.writelines('\n')
+            print('Supplier removed successfully.')
 
 
                 
@@ -463,7 +465,11 @@ class SupplierController:
 # test_suppliercontroller_register = SupplierController()
 # test_suppliercontroller_register.register('Edson', '02666679690194', '1224888890', 'Work')
 
-test_suppliercontroller_change = SupplierController()
-test_suppliercontroller_change.change("Edsuuuu", "Edson", "111188831", "123338823", "Spartan")
+# test_suppliercontroller_change = SupplierController()
+# test_suppliercontroller_change.change("Edsuuuu", "Edson", "111188831", "123338823", "Spartan")
+
+test_suppliercontroller_remove = SupplierController()
+test_suppliercontroller_remove.remove('Edsuuu')
+
 
 # https://linktr.ee/edsoncopque
