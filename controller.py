@@ -364,16 +364,16 @@ class SupplierController:
     def change(self, nameOld, nameNew, cnpjNew, telephoneNew, categoryNew):
         supplierdao_read = SupplierDao.read()
 
-        # data_list = list(filter(lambda x: x.name == nameOld, supplierdao_read))
+        # supplier_name = list(filter(lambda x: x.name == nameOld, supplierdao_read)
         
         #A001:
-        supplier_name = [] 
+        supplier_name = []
         for i1 in supplierdao_read:
             if i1.name == nameOld:
                 supplier_name.append(i1)
 
         if len(supplier_name) > 0:
-            # cnpj_list = list(filter(lambda x: x.cnpj == cnpjNew, supplierdao_read))
+            # supplier_cnpj = list(filter(lambda x: x.cnpj == cnpjNew, supplierdao_read))
 
             supplier_cnpj = []
             for i2 in supplierdao_read:
@@ -381,38 +381,28 @@ class SupplierController:
                     supplier_cnpj.append(i2)
 
             if len(supplier_cnpj) == 0:
-                # supplier_update = list(map(lambda x: SupplierModel(nameNew, cnpjNew, telephoneNew, categoryNew) if(x.name == nameOld) else x, supplierdao_read))
+                # supplier_updated = list(map(lambda x: SupplierModel(nameNew, cnpjNew, telephoneNew, categoryNew) if(x.name == nameOld) else x, supplierdao_read))
 
-                supplier_final = []
+                supplier_updated = []
                 for i3 in supplierdao_read:
                     if i3.name == nameOld:
-                        supplier_final.append(SupplierModel(nameNew, cnpjNew, telephoneNew, categoryNew))
+                        supplier_updated.append(SupplierModel(nameNew, cnpjNew, telephoneNew, categoryNew))
                     else:
-                        supplier_final.append(i3)
+                        supplier_updated.append(i3)
             else:
                 print('The CNPJ already exists.')
-                supplier_final = supplierdao_read
+                supplier_updated = supplierdao_read
         else:
             print('The supplier you want to change does not exists.')
-            supplier_final = supplierdao_read
+            supplier_updated = supplierdao_read
 
         with open('hd_supplier.txt', 'w') as file:
-            for i4 in supplier_final:
+            for i4 in supplier_updated:
                 file.writelines(i4.name + '|' +
                                 i4.cnpj + '|' +
                                 i4.telephone + '|' +
                                 str(i4.category))
                 file.writelines('\n')
-            print(f'[{self.__class__.__name__}:{self.change.__name__}]: Method executed successfully.')
-                
-        #         open('hd_supplier.txt', 'w').close() 
-        #         for i4 in supplier_update:
-        #             SupplierDao.save(i4)
-        #         print('Supplier changed successfully.')
-        #     else:
-        #         print('The CNPJ already exists.')
-        # else:
-        #     print('The supplier you want to change does not exist.')
 
 
                 

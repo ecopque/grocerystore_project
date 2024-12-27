@@ -100,16 +100,16 @@ class SupplierDao:
         with open('hd_supplier.txt', 'r') as file:
             cls.supplier = file.readlines()
 
-        for i in range(len(cls.supplier)):
-            cls.supplier[i] = cls.supplier[i].replace('\n', '')
+        for i1 in range(len(cls.supplier)):
+            cls.supplier[i1] = cls.supplier[i1].replace('\n', '')
         print(cls.supplier)
 
-        for i in range(len(cls.supplier)):
-            cls.supplier[i] = cls.supplier[i].split('|')
+        for i2 in range(len(cls.supplier)):
+            cls.supplier[i2] = cls.supplier[i2].split('|')
 
         hd_supplier = []
-        for i in cls.supplier:
-            hd_supplier.append(SupplierModel(i[0], i[1], i[2], i[3]))
+        for i3 in cls.supplier:
+            hd_supplier.append(SupplierModel(i3[0], i3[1], i3[2], i3[3]))
         return hd_supplier
 
 class PersonDao:
