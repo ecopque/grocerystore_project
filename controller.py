@@ -507,7 +507,7 @@ class CustomerController:
             print('The customer you want to delete does not exists.')
             return None
         
-        with open('hd_customers.txt', 'w') as file:
+        with open('hd_customer.txt', 'w') as file:
             for i3 in persondao_read:
                 file.writelines(i3.name + '|' +
                                 i3.telephone + '|' +
@@ -517,7 +517,23 @@ class CustomerController:
                 file.writelines('\n')
             print('Customers updated successfully.')
 
+    def show(self):
+        persondao_read = PersonDao.read()
 
+        if len(persondao_read) == 0:
+            print('Empty customer list.')
+
+        for i1 in persondao_read:
+            print('===== Customers =====')
+            print(f'Name: {i1.name}\n'
+                  f'Telephone: {i1.telephone}\n'
+                  f'CPF: {i1.cpf}\n'
+                  f'E-mail: {i1.email}\n'
+                  f'Address: {i1.address}')
+
+
+test_customercontroller_show = CustomerController()
+test_customercontroller_show.show()
 
 
 
