@@ -22,8 +22,7 @@ class CategoryController:
     def remove(self, removecategory):
         categorydao_read = CategoryDao.read()
 
-        # hd_compare_cat = list(filter(lambda read_category: read_category.category == removecategory, read_category))
-
+        # hd_compare_cat = list(filter(lambda x: x.category == removecategory, categorydao_read))
         hd_compare_cat = []
         for i1 in categorydao_read:
             if i1.category == removecategory:
@@ -38,11 +37,29 @@ class CategoryController:
                     del categorydao_read[i2]
             print('Category removed successfully.')
             
-        #TODO: Put uncategorized in stock
             with open('hd_category.txt', 'w') as file:
-                    for i2 in categorydao_read:
-                        file.writelines(i2.category)
+                    for i3 in categorydao_read:
+                        file.writelines(i3.category)
                         file.writelines('\n')
+
+        # Put uncategorized in stock:
+        salesdao_read = StockDao.read()
+
+        # stock = list(map(lambda x: StockModel(ProductModel(x.product.name, x.product.price, 'uncategorized'), x.quantity) if x.product.category == removecategory else x, salesdao_read))
+        for i4 in range(len(salesdao_read)):
+            if salesdao_read[i4].product.category == removecategory:
+                salesdao_read[i4] = StockModel(ProductModel(salesdao_read[i4].product.name, 
+                salesdao_read[i4].product.price, 
+                'uncategorized'), 
+                salesdao_read[i4].quantity)
+
+        with open('hd_stock.txt', 'w') as file:
+            for i4 in salesdao_read:
+                file.writelines(i4.product.name + '|' +
+                                i4.product.price + '|' +
+                                i4.product.category + '|' +
+                                str(i4.quantity))
+                file.writelines('\n')
 
     def change(self, changecategory, newcategory):
         categorydao_read = CategoryDao.read()
@@ -703,6 +720,9 @@ class EmployeeController:
 
 # test_employeecontroller_show = EmployeeController()
 # test_employeecontroller_show.show()
+
+# test_categorycontroller_remove = CategoryController()
+# test_categorycontroller_remove.remove('Vegetables')
 
 
 # Edson Copque | https://linktr.ee/edsoncopque

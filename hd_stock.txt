@@ -1,3 +1,6 @@
 maca|5|Fruits|85
-banana|5|Fruits|90
+banana|5|Legumes|90
 pera|5|Fruits|100
+uva|5|uncategorized|100
+kiwi|5|Fruits|100
+rice|5|Naturals|100

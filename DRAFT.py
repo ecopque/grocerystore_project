@@ -5,30 +5,27 @@ from dao import *
 
 # Como posso remover um fornecedor da lista de fornecedores, se ele existir, e garantir que a lista seja atualizada e gravada em um arquivo de texto?
 
-class EmployeeController:
-    def register(self, clt, name, telephone, cpf, email, address):
-        employeedao_read = EmployeeDao.read()
 
-        employee_cpf = []
-        for i1 in employeedao_read:
-            if i1.cpf == cpf:
-                employee_cpf.append(i1)
-        
-        employee_clt = []
-        for i2 in employeedao_read:
-            if i2.clt == clt:
-                employee_clt.append(i2)
+# Put uncategorized in stock:
+salesdao_read = StockDao.read()
 
-        if len(employee_cpf) > 0:
-            print('Employee already exists.')
-        
-        elif len(employee_clt) > 0:
-            print('There is already an employee with this CLT.')
-        
-        else:
-            if len(cpf) == 11 and len(telephone) >= 10 and len(telephone) <= 11:
-                EmployeeDao.save(EmployeeModel(clt, name, telephone, cpf, email, address))
-                print('Employee registered successfully.')
-            else:
-                print('Enter a valid CPF or Telephone number.')
-        
+# Criando a lista de estoque de forma explícita com um loop for
+# Put uncategorized in stock:
+salesdao_read = StockDao.read()
+
+# Alterando diretamente os itens de salesdao_read
+for i in range(len(salesdao_read)):
+    x = salesdao_read[i]
+    if x.product.category == removecategory:
+        # Substituindo diretamente o item na lista
+        salesdao_read[i] = StockModel(ProductModel(x.product.name, x.product.price, 'uncategorized'), x.quantity)
+
+# Escrevendo no arquivo
+with open('hd_stock.txt', 'w') as file:
+    for i4 in salesdao_read:
+        file.writelines(i4.product.name + '|' +
+                        i4.product.price + '|' +
+                        i4.product.category + '|' +
+                        str(i4.quantity))
+        file.writelines('\n')
+
