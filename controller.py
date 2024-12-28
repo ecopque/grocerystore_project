@@ -361,11 +361,11 @@ class SupplierController:
             else:
                 print('Enter a valid CNPJ or Telephone number.')
 
+    #A001:
     def change(self, nameOld, nameNew, cnpjNew, telephoneNew, categoryNew):
         supplierdao_read = SupplierDao.read()
 
         # supplier_name = list(filter(lambda x: x.name == nameOld, supplierdao_read)
-        #A001:
         supplier_name = []
         for i1 in supplierdao_read:
             if i1.name == nameOld:
@@ -398,6 +398,7 @@ class SupplierController:
                                 str(i4.category))
                 file.writelines('\n')
 
+    #A002:
     def remove(self, name):
         supplierdao_read = SupplierDao.read()
 
