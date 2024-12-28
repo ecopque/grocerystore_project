@@ -2,3 +2,6 @@
 
 #A001: How can I check if a supplier with a specific name exists in my database and, if I find that supplier, also ensure that the new CNPJ provided is not being used by another supplier, before updating the supplier with the new data? Finally, update your *.txt file.
 #A0001: https://github.com/ecopque/programming_challenges/tree/main/01_-_Supplier_Update_with_CNPJ_Validation
+
+#A002: How i can remove a supplier from the supplier list, if it exists, and ensure the list is updated and written to a text file?
+#A002: Read data, Search for supplier by name, Check if supplier exists, Update file, Feedback messages.
