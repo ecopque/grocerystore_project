@@ -589,7 +589,6 @@ class EmployeeController:
             print('Employee altered successfully.')
 
 
-
                 
 # registration_test = CategoryController()
 # registration_test.register('Cold cuts') #10:
@@ -651,5 +650,8 @@ class EmployeeController:
 
 # test_employeecontroller_register = EmployeeController()
 # test_employeecontroller_register.register('123', 'Joe Satriani', '12345678912', '12345678912', 'me@satriani.org', 'Highway Star')
+
+# test_employeecontroller_change = EmployeeController()
+# test_employeecontroller_change.change('Joe Satriani', '666', 'Jimi Hendrix', '12345678912', '12345678912', 'me@jimihendrix.com', 'Experience')
 
 # Edson Copque | https://linktr.ee/edsoncopque
