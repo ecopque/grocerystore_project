@@ -616,6 +616,24 @@ class EmployeeController:
                                 str(i3.address))
                 file.writelines('\n')
             print('Employee removed successfully.')
+
+    def show(self):
+        employeedao_read = EmployeeDao.read()
+
+        if len(employeedao_read) == 0:
+            print('Empty employee list.')
+
+        for i1 in employeedao_read:
+            print('===== Employee =====')
+            print(f'CLT: {i1.clt}\n'
+                  f'Name: {i1.name}\n'
+                  f'Telephone: {i1.telephone}\n'
+                  f'CPF: {i1.cpf}\n'
+                  f'E-mail: {i1.email}'
+                  f'Address: {i1.address}')
+            
+test_employeecontroller_show = EmployeeController()
+test_employeecontroller_show.show()
             
 
 
@@ -683,5 +701,8 @@ class EmployeeController:
 
 # test_employeecontroller_change = EmployeeController()
 # test_employeecontroller_change.change('Joe Satriani', '666', 'Jimi Hendrix', '12345678912', '12345678912', 'me@jimihendrix.com', 'Experience')
+
+# test_employeecontroller_remove = EmployeeController()
+# test_employeecontroller_remove.remove('Steve Ray Vaughan')
 
 # Edson Copque | https://linktr.ee/edsoncopque
