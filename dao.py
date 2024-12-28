@@ -171,6 +171,7 @@ class EmployeeDao:
             hd_employee.append(EmployeeModel(i[0], i[1], i[2], i[3], i[4], i[5]))
         return hd_employee
 
+# inactive
 class CustomerDao:
     @classmethod
     def save(cls, customer: CustomerModel):
@@ -199,6 +200,7 @@ class CustomerDao:
             for i in cls.customer:
                 hd_customer.append(CustomerModel(i[0], i[1], i[2], i[3], i[4]))
             return hd_customer
+
 
 # CategoryDao.save('Fruits')
 # CategoryDao.save('Vegetables')
