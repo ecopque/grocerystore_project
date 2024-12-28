@@ -488,6 +488,36 @@ class CustomerController:
                 file.writelines('\n')
             print('Customer data saved successfully.')
 
+    def remove(self, name):
+        persondao_read = PersonDao.read()
+        
+        # customer_name = list(filter(lambda x: x.name == name, persondao_read)
+        customer_name = []
+        for i1 in persondao_read:
+            if i1.name == name:
+                customer_name.append(i1)
+        
+        if len(customer_name) > 0:
+            for i2 in range(len(persondao_read)):
+                if persondao_read[i2].name == name:
+                    print(f'Customer {persondao_read[i2].name} deleted.')
+                    del persondao_read[i2]
+                    break
+        else:
+            print('The customer you want to delete does not exists.')
+            return None
+        
+        with open('hd_customers.txt', 'w') as file:
+            for i3 in persondao_read:
+                file.writelines(i3.name + '|' +
+                                i3.telephone + '|' +
+                                i3.cpf + '|' +
+                                i3.email + '|' +
+                                str(i3.address))
+                file.writelines('\n')
+            print('Customers updated successfully.')
+
+
 
 
 
@@ -541,8 +571,11 @@ class CustomerController:
 # test_customercontroller_register = CustomerController()
 # test_customercontroller_register.register('Steve Vai', '9458973564', '95665253215', 'me@vai.com', 'Hydra Institute')
 
-test_CustomerController_change = CustomerController()
-test_CustomerController_change.change('Carl Sagan', 'Yngwie Malmsteen', '12345678912345', '12345678912', 'me@yngwie.com', 'Rising Force')   
+# test_CustomerController_change = CustomerController()
+# test_CustomerController_change.change('Carl Sagan', 'Yngwie Malmsteen', '12345678912345', '12345678912', 'me@yngwie.com', 'Rising Force')   
+
+# test_customercontroller_remove = CustomerController()
+# test_customercontroller_remove.remove('Carl Sagan')
 
 
 # Edson Copque | https://linktr.ee/edsoncopque
