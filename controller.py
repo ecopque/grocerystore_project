@@ -460,6 +460,36 @@ class CustomerController:
             else:
                 print('Enter a valid CPF os telephone number.')
 
+    def change(self, nameOld, nameNew, telephoneNew, cpfNew, emailNew, addressNew):
+        persondao_read = PersonDao.read()
+
+        # customer_name = list(filter(lambda x: x.name == nameOld, persondao_read))
+        customer_name = []
+        for i1 in persondao_read:
+            if i1.name == nameOld:
+                customer_name.append(i1)
+        
+        if len(customer_name) > 0:
+            # persondao_read = list(map(lambda x: PersonModel(nameNew, telephoneNew, cpfNew, emailNew, addressNew) if x.name == nameOld else x, persondao_read))
+            for i2 in range(len(persondao_read)):
+                if persondao_read[i2].name == nameOld:
+                    persondao_read[i2] = PersonModel(nameNew, telephoneNew, cpfNew, emailNew, addressNew)
+            print(f'Customer {nameOld} updates successfully.')
+        else:
+            print('The customer you want to change does not exists.')
+
+        with open('hd_customers.txt', 'w') as file:
+            for i2 in persondao_read:
+                file.writelines(i2.name + '|' +
+                                i2.telephone + '|' +
+                                i2.cpf + '|' +
+                                str(i2.email) + '|' +
+                                str(i2.address))
+                file.writelines('\n')
+            print('Customer data saved successfully.')
+
+
+
 
                 
 # registration_test = CategoryController()
@@ -511,4 +541,8 @@ class CustomerController:
 # test_customercontroller_register = CustomerController()
 # test_customercontroller_register.register('Steve Vai', '9458973564', '95665253215', 'me@vai.com', 'Hydra Institute')
 
-# https://linktr.ee/edsoncopque
+test_CustomerController_change = CustomerController()
+test_CustomerController_change.change('Carl Sagan', 'Yngwie Malmsteen', '12345678912345', '12345678912', 'me@yngwie.com', 'Rising Force')   
+
+
+# Edson Copque | https://linktr.ee/edsoncopque
