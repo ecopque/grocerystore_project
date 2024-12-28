@@ -531,9 +531,35 @@ class CustomerController:
                   f'E-mail: {i1.email}\n'
                   f'Address: {i1.address}')
 
+class EmployeeController:
+    def register(self, clt, name, telephone, cpf, email, address):
+        employeedao_read = EmployeeDao.read()
 
-test_customercontroller_show = CustomerController()
-test_customercontroller_show.show()
+        # employee_cpf = list(filter(lambda x: x.cpf == cpf, employeedao_read))
+        employee_cpf = []
+        for i1 in employeedao_read:
+            if i1.cpf == cpf:
+                employee_cpf.append(i1)
+
+        # employee_clt = list(filter(lambda x: x.clt == clt, employeedao_read))
+        employee_clt = []
+        for i2 in employeedao_read:
+            if i2.clt == clt:
+                employee_clt.append(i2)
+
+        if len(employee_clt) > 0:
+            print('CPF already exists.')
+        
+        elif len(employee_clt) > 0:
+            print('There is already an employee with this CLT.')
+
+        else:
+            if len(cpf) == 11 and len(telephone) >= 10 and len(telephone) <= 11:
+                EmployeeDao.save(EmployeeModel(clt, name, telephone, cpf, email, address))
+                print('Employee registered successfully.')
+            else:
+                print('Enter a valid CPF or Telephone number.')
+
 
 
 
@@ -593,5 +619,10 @@ test_customercontroller_show.show()
 # test_customercontroller_remove = CustomerController()
 # test_customercontroller_remove.remove('Carl Sagan')
 
+# test_customercontroller_show = CustomerController()
+# test_customercontroller_show.show()
+
+# test_employeecontroller_register = EmployeeController()
+# test_employeecontroller_register.register('123', 'Joe Satriani', '12345678912', '12345678912', 'me@satriani.org', 'Highway Star')
 
 # Edson Copque | https://linktr.ee/edsoncopque

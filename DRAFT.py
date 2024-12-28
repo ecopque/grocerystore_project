@@ -5,25 +5,30 @@ from dao import *
 
 # Como posso remover um fornecedor da lista de fornecedores, se ele existir, e garantir que a lista seja atualizada e gravada em um arquivo de texto?
 
-class CustomerController:
-    def change(self, nameOld, nameNew, telephoneNew, cpfNew, emailNew, addressNew):
-        persondao_read = PersonDao.read()
+class EmployeeController:
+    def register(self, clt, name, telephone, cpf, email, address):
+        employeedao_read = EmployeeDao.read()
 
-        customer_name = []
-        for i1 in persondao_read:
-            if i1.name == nameOld:
-                customer_name.append(i1)
+        employee_cpf = []
+        for i1 in employeedao_read:
+            if i1.cpf == cpf:
+                employee_cpf.append(i1)
+        
+        employee_clt = []
+        for i2 in employeedao_read:
+            if i2.clt == clt:
+                employee_clt.append(i2)
 
-        if len(customer_name) > 0:
-            for i2 in range(len(persondao_read)):
-                if persondao_read[i2].name == nameOld:
-                    persondao_read[i2] = PersonModel(nameNew, telephoneNew, cpfNew, emailNew, addressNew)
-            print(f'The customer {nameOld} updates successfully.')
+        if len(employee_cpf) > 0:
+            print('Employee already exists.')
+        
+        elif len(employee_clt) > 0:
+            print('There is already an employee with this CLT.')
+        
         else:
-            print('The customer you want to change does not exists.')
-    
-        with open('hd_customer.txt', 'w') as file:
-            for i3 in persondao_read:
-                file.writelines(i3.name + '|' +
-                                i3.telephone + '|' +
-                                ...)
+            if len(cpf) == 11 and len(telephone) >= 10 and len(telephone) <= 11:
+                EmployeeDao.save(EmployeeModel(clt, name, telephone, cpf, email, address))
+                print('Employee registered successfully.')
+            else:
+                print('Enter a valid CPF or Telephone number.')
+        
