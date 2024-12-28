@@ -440,6 +440,26 @@ class SupplierController:
                   f'Telephone: {i1.telephone}\n'
                   f'CNPJ: {i1.cnpj}')
 
+class CustomerController:
+    def register(self, name, telephone, cpf, email, address):
+        persondao_read = PersonDao.read()
+
+        # cpf_list = list(filter(lambda x: x.cpf == cpf, persondao_read))
+        cpf_list = []
+        for i1 in persondao_read:
+            if i1.cpf == cpf:
+                cpf_list.append(i1)
+
+        if len(cpf_list) > 0:
+            print('CPF already exists.')
+
+        else:
+            if len(cpf) == 11 and len(telephone) >= 10 and len(telephone) <= 11:
+                PersonDao.save(PersonModel(name, telephone, cpf, email, address))
+                print('Customer registered successfully.')
+            else:
+                print('Enter a valid CPF os telephone number.')
+
 
                 
 # registration_test = CategoryController()
@@ -485,8 +505,10 @@ class SupplierController:
 # test_suppliercontroller_remove = SupplierController()
 # test_suppliercontroller_remove.remove('Edsuuu')
 
-test_suppliercontroller_show = SupplierController()
-test_suppliercontroller_show.show()
+# test_suppliercontroller_show = SupplierController()
+# test_suppliercontroller_show.show()
 
+# test_customercontroller_register = CustomerController()
+# test_customercontroller_register.register('Steve Vai', '9458973564', '95665253215', 'me@vai.com', 'Hydra Institute')
 
 # https://linktr.ee/edsoncopque
