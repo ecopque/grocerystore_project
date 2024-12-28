@@ -427,6 +427,19 @@ class SupplierController:
                 file.writelines('\n')
             print('Supplier removed successfully.')
 
+    def show(self):
+        supplierdao_read = SupplierDao.read()
+
+        if len(supplierdao_read) == 0:
+            print('The supplier list is empty.')
+
+        for i1 in supplierdao_read:
+            print('===== Suppliers =====')
+            print(f'Category: {i1.category}\n'
+                  f'Name: {i1.name}\n'
+                  f'Telephone: {i1.telephone}\n'
+                  f'CNPJ: {i1.cnpj}')
+
 
                 
 # registration_test = CategoryController()
@@ -469,8 +482,11 @@ class SupplierController:
 # test_suppliercontroller_change = SupplierController()
 # test_suppliercontroller_change.change("Edsuuuu", "Edson", "111188831", "123338823", "Spartan")
 
-test_suppliercontroller_remove = SupplierController()
-test_suppliercontroller_remove.remove('Edsuuu')
+# test_suppliercontroller_remove = SupplierController()
+# test_suppliercontroller_remove.remove('Edsuuu')
+
+test_suppliercontroller_show = SupplierController()
+test_suppliercontroller_show.show()
 
 
 # https://linktr.ee/edsoncopque
