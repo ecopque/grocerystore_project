@@ -479,12 +479,12 @@ class CustomerController:
             print('The customer you want to change does not exists.')
 
         with open('hd_customers.txt', 'w') as file:
-            for i2 in persondao_read:
-                file.writelines(i2.name + '|' +
-                                i2.telephone + '|' +
-                                i2.cpf + '|' +
-                                str(i2.email) + '|' +
-                                str(i2.address))
+            for i3 in persondao_read:
+                file.writelines(i3.name + '|' +
+                                i3.telephone + '|' +
+                                i3.cpf + '|' +
+                                str(i3.email) + '|' +
+                                str(i3.address))
                 file.writelines('\n')
             print('Customer data saved successfully.')
 
