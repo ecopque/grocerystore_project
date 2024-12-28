@@ -632,11 +632,7 @@ class EmployeeController:
                   f'E-mail: {i1.email}'
                   f'Address: {i1.address}')
             
-test_employeecontroller_show = EmployeeController()
-test_employeecontroller_show.show()
-            
-
-
+        
                 
 # registration_test = CategoryController()
 # registration_test.register('Cold cuts') #10:
@@ -704,5 +700,9 @@ test_employeecontroller_show.show()
 
 # test_employeecontroller_remove = EmployeeController()
 # test_employeecontroller_remove.remove('Steve Ray Vaughan')
+
+# test_employeecontroller_show = EmployeeController()
+# test_employeecontroller_show.show()
+
 
 # Edson Copque | https://linktr.ee/edsoncopque
