@@ -588,6 +588,36 @@ class EmployeeController:
                 file.writelines('\n')
             print('Employee altered successfully.')
 
+    def remove(self, name):
+        employeedao_read = EmployeeDao.read()
+
+        # employee_name = list(filter(lambda x: x.name == name, employeedao_read))
+        employee_name = []
+        for i1 in employeedao_read:
+            if i1.name == name:
+                employee_name.append(i1)
+
+        if len(employee_name) > 0:
+            for i2 in range(len(employeedao_read)):
+                if employeedao_read[i2].name == name:
+                    del employeedao_read[i2]
+                    break
+        else:
+            print('The employee you want to remove does not exists.')
+            return None
+        
+        with open('hd_employee.txt', 'w') as file:
+            for i3 in employeedao_read:
+                file.writelines(i3.clt + '|' +
+                                i3.name + '|' +
+                                i3.telephone + '|' +
+                                i3.cpf + '|' +
+                                i3.email + '|' +
+                                str(i3.address))
+                file.writelines('\n')
+            print('Employee removed successfully.')
+            
+
 
                 
 # registration_test = CategoryController()
