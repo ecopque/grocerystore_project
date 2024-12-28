@@ -560,6 +560,33 @@ class EmployeeController:
             else:
                 print('Enter a valid CPF or Telephone number.')
 
+    def change(self, nameOld, cltNew, nameNew, telephoneNew, cpfNew, emailNew, addressNew):
+        employeedao_read = EmployeeDao.read()
+
+        # employee_name = list(filter(lambda x: x.name == nameOld, employeedao_read))
+        employee_name = []
+        for i1 in employeedao_read:
+            if i1.name == nameOld:
+                employee_name.append(i1)
+        
+        if len(employee_name) > 0:
+            # employeedao_read = list(map(lambda x: EmployeeModel(cltNew, nameNew, telephoneNew, cpfNew, emailNew, addressNew) if x.name == nameOld else x, employeedao_read))
+            for i2 in range(len(employeedao_read)):
+                if employeedao_read[i2].name == nameOld:
+                    employeedao_read[i2] = EmployeeModel(cltNew, nameNew, telephoneNew, cpfNew, emailNew, addressNew)
+                    print(f'The employee {nameOld} updates successfully.')
+                else:
+                    print('The employee you want to change does not exists.')
+        with open('hd_employee.txt', 'w') as file:
+            for i3 in employeedao_read:
+                file.writelines(i3.clt + '|' +
+                                i3.name + '|' +
+                                i3.telephone + '|' +
+                                i3.cpf + '|' +
+                                i3.email + '|' +
+                                str(i3.address))
+                file.writelines('\n')
+            print('Employee altered successfully.')
 
 
 
