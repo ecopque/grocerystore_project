@@ -18,6 +18,7 @@ createfiles('hd_category.txt',
             'hd_supplier.txt')
 
 if __name__ == '__main__':
+    
     while True:
         ask_global = int(input('Enter 1 to access [Categories]\n'
                                 'Enter 2 to access [Stock]\n'
@@ -25,11 +26,12 @@ if __name__ == '__main__':
                                 'Enter 4 to access [Customer]\n'
                                 'Enter 5 to access [Employee]\n'
                                 'Enter 6 to access [Sales]\n'
-                                'Enter 7 to access [see] top selling products\n'
-                                'Enter 8 to exit: \n'))
+                                'Enter 7 to access [Show] top selling products\n'
+                                'Enter 8 to [exit]: \n'))
                                     
         if ask_global == 1:
             categorycontroller = controller.CategoryController()
+            
             while True:
                 ask_categories = int(input('Enter 1 to [register] a category\n'
                                             'Enter 2 to [remove] a category\n'
@@ -38,17 +40,18 @@ if __name__ == '__main__':
                                             'Enter 5 to [exit]: \n'))
                 
                 if ask_categories == 1:
-                    register_category = input('Enter the category you want to register: \n')
-                    categorycontroller.register(register_category)
+                    category = input('Enter the category you want to register: \n')
+                    categorycontroller.register(category)
 
                 elif ask_categories == 2:
-                    remove_categoryold = input('Enter the category you want to remove: \n')
-                    categorycontroller.remove(remove_categoryold)
+                    category = input('Enter the category you want to remove: \n')
+                    categorycontroller.remove(category)
 
                 elif ask_categories == 3:
-                    change_categoryold = input('Enter the category you want to change: \n')
-                    change_categorynew = input('Enter the new category: \n')
-                    categorycontroller.change(change_categoryold, change_categorynew)
+                    categoryold = input('Enter the category you want to change: \n')
+                    categorynew = input('Enter the new category: \n')
+                    categorycontroller.change(categoryold, 
+                                              categorynew)
 
                 elif ask_categories == 4:
                     categorycontroller.show()
@@ -57,7 +60,8 @@ if __name__ == '__main__':
                     break
         
         elif ask_global == 2:
-            stockcontroller = controller.StockController
+            stockcontroller = controller.StockController()
+            
             while True:
                 ask_stock = int(input('Enter 1 to [register] a new product\n'
                                       'Enter 2 to [remove] a product\n'
@@ -66,33 +70,75 @@ if __name__ == '__main__':
                                       'Enter 5 to [exit]: \n'))
                                                       
                 if ask_stock == 1:
-                    register_name = input('Enter a new product: \n')
-                    register_price = input('Enter a price of the product: \n')
-                    register_category = input('Enter a category of the product: \n')
-                    register_quantity = input('Enter a quantity of the product: \n')
-                    stockcontroller.register(register_name, 
-                                             register_price, 
-                                             register_category, 
-                                             register_quantity)
+                    name = input('Enter a new product: \n')
+                    price = input('Enter a price of the product: \n')
+                    category = input('Enter a category of the product: \n')
+                    quantity = input('Enter a quantity of the product: \n')
+                    stockcontroller.register(name, 
+                                             price, 
+                                             category, 
+                                             quantity)
 
                 elif ask_stock == 2:
-                    remove_name = input('Enter the product you want to remove: \n')
-                    stockcontroller.remove(remove_name)
+                    product = input('Enter the product you want to remove: \n')
+                    stockcontroller.remove(product)
 
                 elif ask_stock == 3:
-                    change_nametold = input('Enter a product you want to change: \n')
-                    change_namenew = input('Enter the new product name: \n')
-                    change_pricenew = input('Enter the new product price: \n')
-                    change_categorynew = input('Enter the product category: \n')
-                    change_quantitynew = input('Enter the product quantity')
-                    stockcontroller.change(change_nametold, 
-                                           change_namenew,
-                                           change_pricenew,
-                                           change_categorynew,
-                                           change_quantitynew)
+                    nameold = input('Enter a product you want to change: \n')
+                    namenew = input('Enter the new product name: \n')
+                    pricenew = input('Enter the new product price: \n')
+                    categorynew = input('Enter the product category: \n')
+                    quantitynew = input('Enter the product quantity')
+                    stockcontroller.change(nameold, 
+                                           namenew,
+                                           pricenew,
+                                           categorynew,
+                                           quantitynew)
                 
                 elif ask_stock == 4:
                     stockcontroller.show()
                 
+                else:
+                    break
+
+        elif ask_global == 3:
+            suppliercontroller = controller.SupplierController()
+
+            while True:
+                ask_supplier = int(input('Enter 1 to [register] a supplier: \n'
+                                         'Enter 2 to [remove] a supplier: \n'
+                                         'Enter 3 to [change] a supplier: \n'
+                                         'Enter 4 to [show] suppliers: \n'
+                                         'Enter 5 to [exit]: '))
+                
+                if ask_supplier == 1:
+                    name = input('Enter the supplier you want to register: \n')
+                    cnpj = input('Enter the CNPJ you want to register: \n')
+                    telephone = input('Enter the Telephone number you want to register: \n')
+                    category = input('Enter the category you want to register: \n')
+                    suppliercontroller.register(name, 
+                                                cnpj, 
+                                                telephone, 
+                                                category)
+                    
+                elif ask_supplier == 2:
+                    supplier = input('Enter the supplier you want to remove: \n')
+                    suppliercontroller.remove(supplier)
+
+                elif ask_supplier == 3:
+                    nameold = input('Enter the supplier you want to change: \n')
+                    namenew = input('Enter the new supplier you want to register: \n')
+                    cnpjnew = input('Enter the new CNPJ you want to register: \n')
+                    telephonenew = input('Enter the new Telephone you want to register: \n')
+                    categorynew = input('Enter the new category you want to register: \n')
+                    suppliercontroller.change(nameold,
+                                              namenew,
+                                              cnpjnew,
+                                              telephonenew,
+                                              categorynew)
+
+                elif ask_supplier == 4:
+                    suppliercontroller.show()
+
                 else:
                     break
