@@ -5,27 +5,27 @@ from dao import *
 from datetime import datetime
 
 class CategoryController:
-    def register(self, newcategory):
+    def register(self, categoryNew):
         categorydao_read = CategoryDao.read()
         
         exists_flag = False
         for i1 in categorydao_read:
-            if i1.category == newcategory: #11:
+            if i1.category == categoryNew: #11:
                 exists_flag = True
         
         if not exists_flag:
-            CategoryDao.save(newcategory)
+            CategoryDao.save(categoryNew)
             print('Category registered successfully.')
         else:
             print('The category you want to register already exists.')
 
-    def remove(self, removecategory):
+    def remove(self, categoryOld):
         categorydao_read = CategoryDao.read()
 
-        # hd_compare_cat = list(filter(lambda x: x.category == removecategory, categorydao_read))
+        # hd_compare_cat = list(filter(lambda x: x.category == categoryOld, categorydao_read))
         hd_compare_cat = []
         for i1 in categorydao_read:
-            if i1.category == removecategory:
+            if i1.category == categoryOld:
                 hd_compare_cat.append(i1)
     
         if len(hd_compare_cat) == 0:
@@ -33,7 +33,7 @@ class CategoryController:
         
         else:
             for i2 in range(len(categorydao_read) -1, -1, -1): #12:
-                if categorydao_read[i2].category == removecategory:
+                if categorydao_read[i2].category == categoryOld:
                     del categorydao_read[i2]
             print('Category removed successfully.')
             
@@ -47,7 +47,7 @@ class CategoryController:
 
         # stock = list(map(lambda x: StockModel(ProductModel(x.product.name, x.product.price, 'uncategorized'), x.quantity) if x.product.category == removecategory else x, salesdao_read))
         for i4 in range(len(stockdao_read)):
-            if stockdao_read[i4].product.category == removecategory:
+            if stockdao_read[i4].product.category == categoryOld:
                 stockdao_read[i4] = StockModel(ProductModel(
                     stockdao_read[i4].product.name, 
                     stockdao_read[i4].product.price, 
@@ -62,40 +62,40 @@ class CategoryController:
                                 str(i4.quantity))
                 file.writelines('\n')
 
-    def change(self, changecategory, newcategory):
+    def change(self, categoryOld, categoryNew):
         categorydao_read = CategoryDao.read()
 
-        # hd_compare_cat = list(filter(lambda read_category: read_category.category == changecategory, read_category))
+        # hd_compare_cat = list(filter(lambda read_category: read_category.category == categoryOld, read_category))
         hd_compare_cat = []
         for i1 in categorydao_read:
-            if i1.category == changecategory:
+            if i1.category == categoryOld:
                 hd_compare_cat.append(i1)
         
         if len(hd_compare_cat) > 0:
 
-            # hd_compare_cat2 = list(filter(lambda read_category: read_category.category == newcategory, read_category))
+            # hd_compare_cat2 = list(filter(lambda read_category: read_category.category == categoryNew, read_category))
             hd_compare_cat2 = []
             for i2 in categorydao_read:
-                if i2.category == newcategory:
+                if i2.category == categoryNew:
                     hd_compare_cat2.append(i2)
             
             if len(hd_compare_cat2) == 0:
 
                 # read_category = list(map(lambda read_category: CategoryModel(newcategory) if (read_category.category == changecategory) else (read_category), read_category))
                 for i3 in range(len(categorydao_read)):
-                    if categorydao_read[i3].category == changecategory:
-                        categorydao_read[i3].category = newcategory
-                print(f"Category '{changecategory}' changed to '{newcategory}' successfully.")
+                    if categorydao_read[i3].category == categoryOld:
+                        categorydao_read[i3].category = categoryNew
+                print(f"Category '{categoryOld}' changed to '{categoryNew}' successfully.")
 
                 # Change stock category.
                 stockdao_read = StockDao.read()
 
                 for i5 in range(len(stockdao_read)):
-                    if stockdao_read[i5].product.category == changecategory:
+                    if stockdao_read[i5].product.category == categoryOld:
                         stockdao_read[i5] = StockModel(ProductModel(
                             stockdao_read[i5].product.name,
                             stockdao_read[i5].product.price,
-                            newcategory),
+                            categoryNew),
                             stockdao_read[i5].quantity)
                 
                 with open('hd_stock.txt', 'w') as file:
@@ -106,9 +106,9 @@ class CategoryController:
                                         str(i6.quantity))
                         file.writelines('\n')
             else:
-                print(f"The category '{newcategory}' already exists.")
+                print(f"The category '{categoryNew}' already exists.")
         else:
-           print(f"The category '{newcategory}' you want to change does not exist.")
+           print(f"The category '{categoryNew}' you want to change does not exist.")
 
         with open('hd_category.txt', 'w') as file:
             for i4 in categorydao_read:
