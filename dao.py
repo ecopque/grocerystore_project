@@ -220,5 +220,4 @@ class CustomerDao:
 # print(x[0].items_sold.name) #8:
 # print(x[0].items_sold.price) #9:
 
-
 # Edson Copque | https://linktr.ee/edsoncopque

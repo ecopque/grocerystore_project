@@ -105,7 +105,6 @@ class CategoryController:
                                         i6.product.category + '|' +
                                         str(i6.quantity))
                         file.writelines('\n')
-
             else:
                 print(f"The category '{newcategory}' already exists.")
         else:
@@ -133,7 +132,6 @@ class StockController:
         
         # hd_compare_cat = list(filter(lambda stockdao_read: stockdao_read.category == category, categorydao_read))
         # hd_compare_name = list(filter(lambda stockdao_read: stockdao_read.product.name == name, stockdao_read))
-
         hd_compare_cat = []
         for i1 in categorydao_read:
             if i1.category == category:
@@ -259,7 +257,6 @@ class SalesController:
                         # see StockDao.read()
                         # i1 = StockModel instance.
                         # i1.product = ProductModel instance.
-
                         solded = SalesModel(ProductModel(i1.product.name, 
                                                          i1.product.price, 
                                                          i1.product.category), 
@@ -319,7 +316,6 @@ class SalesController:
                 products.append({'product': name, 'quantity': int(quantity)}) #16:
 
         # ordered = sorted(products, key=lambda k: k['quantity'], reverse=True)
-
         ordered = products.copy()
         for i4 in range(len(ordered)):
             for j4 in range(i4 + 1, len(ordered)):
@@ -340,7 +336,6 @@ class SalesController:
         enddate = datetime.strptime(endDate, '%d/%m/%Y')
 
         # selected_sales = list(filter(lambda x: datetime.strptime(x.date, '%d/%m/%Y') >= startdate1 and datetime.strptime(x.date, '%d/%m/%Y') <= enddate1, salesdao_read))
-
         selected_sales = []
         for i1 in salesdao_read:
             sale_date = datetime.strptime(i1.date, '%d/%m/%Y')
@@ -370,7 +365,6 @@ class SupplierController:
         supplierdao_read = SupplierDao.read()
 
         # cnpj_list = list(filter(lambda x: x.cnpj == cnpj, supplierdao_read))
-
         cnpj_list = []
         telephone_list = []
 
@@ -379,7 +373,6 @@ class SupplierController:
                 cnpj_list.append(i1)
 
         # telephone_list = list(filter(lambda x: x.telephone == telephone, supplierdao_read))
-
             if i1.telephone == telephone:
                 telephone_list.append(i1)
 
@@ -741,8 +734,7 @@ class EmployeeController:
 # test_categorycontroller_remove = CategoryController()
 # test_categorycontroller_remove.remove('Vegetables')
 
-test_categorycontroller_change = CategoryController()
-test_categorycontroller_change.change('Fruits', 'Fruits2')
-
+# test_categorycontroller_change = CategoryController()
+# test_categorycontroller_change.change('Fruits', 'Fruits2')
 
 # Edson Copque | https://linktr.ee/edsoncopque
