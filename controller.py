@@ -42,19 +42,20 @@ class CategoryController:
                         file.writelines(i3.category)
                         file.writelines('\n')
 
-        # Put uncategorized in stock:
-        salesdao_read = StockDao.read()
+        # Put 'uncategorized' on the stock product if removing the category
+        stockdao_read = StockDao.read()
 
         # stock = list(map(lambda x: StockModel(ProductModel(x.product.name, x.product.price, 'uncategorized'), x.quantity) if x.product.category == removecategory else x, salesdao_read))
-        for i4 in range(len(salesdao_read)):
-            if salesdao_read[i4].product.category == removecategory:
-                salesdao_read[i4] = StockModel(ProductModel(salesdao_read[i4].product.name, 
-                salesdao_read[i4].product.price, 
-                'uncategorized'), 
-                salesdao_read[i4].quantity)
+        for i4 in range(len(stockdao_read)):
+            if stockdao_read[i4].product.category == removecategory:
+                stockdao_read[i4] = StockModel(ProductModel(
+                    stockdao_read[i4].product.name, 
+                    stockdao_read[i4].product.price, 
+                    'uncategorized'), 
+                    stockdao_read[i4].quantity)
 
         with open('hd_stock.txt', 'w') as file:
-            for i4 in salesdao_read:
+            for i4 in stockdao_read:
                 file.writelines(i4.product.name + '|' +
                                 i4.product.price + '|' +
                                 i4.product.category + '|' +
@@ -65,7 +66,6 @@ class CategoryController:
         categorydao_read = CategoryDao.read()
 
         # hd_compare_cat = list(filter(lambda read_category: read_category.category == changecategory, read_category))
-
         hd_compare_cat = []
         for i1 in categorydao_read:
             if i1.category == changecategory:
@@ -74,7 +74,6 @@ class CategoryController:
         if len(hd_compare_cat) > 0:
 
             # hd_compare_cat2 = list(filter(lambda read_category: read_category.category == newcategory, read_category))
-            
             hd_compare_cat2 = []
             for i2 in categorydao_read:
                 if i2.category == newcategory:
@@ -83,12 +82,30 @@ class CategoryController:
             if len(hd_compare_cat2) == 0:
 
                 # read_category = list(map(lambda read_category: CategoryModel(newcategory) if (read_category.category == changecategory) else (read_category), read_category))
-                
                 for i3 in range(len(categorydao_read)):
                     if categorydao_read[i3].category == changecategory:
                         categorydao_read[i3].category = newcategory
                 print(f"Category '{changecategory}' changed to '{newcategory}' successfully.")
-                #TODO: Change stock category.
+
+                # Change stock category.
+                stockdao_read = StockDao.read()
+
+                for i5 in range(len(stockdao_read)):
+                    if stockdao_read[i5].product.category == changecategory:
+                        stockdao_read[i5] = StockModel(ProductModel(
+                            stockdao_read[i5].product.name,
+                            stockdao_read[i5].product.price,
+                            newcategory),
+                            stockdao_read[i5].quantity)
+                
+                with open('hd_stock.txt', 'w') as file:
+                    for i6 in stockdao_read:
+                        file.writelines(i6.product.name + '|' +
+                                        i6.product.price + '|' +
+                                        i6.product.category + '|' +
+                                        str(i6.quantity))
+                        file.writelines('\n')
+
             else:
                 print(f"The category '{newcategory}' already exists.")
         else:
@@ -723,6 +740,9 @@ class EmployeeController:
 
 # test_categorycontroller_remove = CategoryController()
 # test_categorycontroller_remove.remove('Vegetables')
+
+test_categorycontroller_change = CategoryController()
+test_categorycontroller_change.change('Fruits', 'Fruits2')
 
 
 # Edson Copque | https://linktr.ee/edsoncopque
