@@ -21,6 +21,7 @@ The project is organized into three main layers according to the MVC architectur
 - **DAO**: Manages data interactions with the text files, providing methods for reading, writing, and updating data.
 
 mind map:
+
 ![readme](https://github.com/ecopque/grocerystore_project/blob/main/prints/Grocery_Store_mindmap.png)
 
 
@@ -53,6 +54,7 @@ The system offers the following features, divided by operation categories:
 Once the application starts, you will be presented with an interactive menu in the terminal that allows you to manage categories, inventory, suppliers, customers, employees, and sales. Each category has its own submenu for interacting with the system.
 
 terminal:
+
 ![readme](https://github.com/ecopque/grocerystore_project/blob/main/prints/Screenshot%20from%202024-12-31%2010-33-05.png)
 
 
