@@ -212,3 +212,29 @@ if __name__ == '__main__':
                                                 cpf,
                                                 email,
                                                 address)
+                    
+                elif ask_employee == 2:
+                    name = input('Enter the employee you want to remove: \n')
+                    employeecontroller.remove(name)
+
+                elif ask_employee == 3:
+                    nameold = input('Enter the employee you want to change: \n')
+                    cltnew = input('Enter the CLT you want to register: \n')
+                    namenew = input('Enter the new name you want to register: \n')
+                    telephonenew = input('Enter the telephone you want to register: \n')
+                    cpfnew = input('Enter the CPF you want to register: \n')
+                    emailnew = input('Enter the e-mail you want to register: \n')
+                    addressnew = input('Enter the address you wanto to register: \n')
+                    employeecontroller.change(nameold,
+                                              cltnew,
+                                              namenew,
+                                              telephonenew,
+                                              cpfnew,
+                                              emailnew,
+                                              addressnew)
+
+                elif ask_employee == 4:
+                    employeecontroller.show()
+
+                else:
+                    break
