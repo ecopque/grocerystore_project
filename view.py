@@ -21,23 +21,23 @@ if __name__ == '__main__':
     
     while True:
         ask_global = int(input('Enter 1 to access [Categories]\n'
-                                'Enter 2 to access [Stock]\n'
-                                'Enter 3 to access [Supplier]\n'
-                                'Enter 4 to access [Customer]\n'
-                                'Enter 5 to access [Employee]\n'
-                                'Enter 6 to access [Sales]\n'
-                                'Enter 7 to access [Show] top selling products\n'
-                                'Enter 8 to [exit]: \n'))
+                               'Enter 2 to access [Stock]\n'
+                               'Enter 3 to access [Supplier]\n'
+                               'Enter 4 to access [Customer]\n'
+                               'Enter 5 to access [Employee]\n'
+                               'Enter 6 to access [Sales]\n'
+                               'Enter 7 to access [Show] top selling products\n'
+                               'Enter 8 to [exit]: \n'))
                                     
         if ask_global == 1:
             categorycontroller = controller.CategoryController()
             
             while True:
                 ask_categories = int(input('Enter 1 to [register] a category\n'
-                                            'Enter 2 to [remove] a category\n'
-                                            'Enter 3 to [change] a category\n'
-                                            'Enter 4 to [show] registered categories\n'
-                                            'Enter 5 to [exit]: \n'))
+                                           'Enter 2 to [remove] a category\n'
+                                           'Enter 3 to [change] a category\n'
+                                           'Enter 4 to [show] registered categories\n'
+                                           'Enter 5 to [exit]: \n'))
                 
                 if ask_categories == 1:
                     category = input('Enter the category you want to register: \n')
@@ -165,11 +165,11 @@ if __name__ == '__main__':
                                                 email,
                                                 address)
 
-                if ask_customer == 2:
+                elif ask_customer == 2:
                     name = input('Enter the customer you want to remove: \n')
                     customercontroller.remove(name)
 
-                if ask_customer == 3:
+                elif ask_customer == 3:
                     nameold = input('Enter the customer you want to change: \n')
                     namenew = input('Enter the new customer you want to change: \n')
                     telephonenew = input('Enter the telephone you want to change: \n')
@@ -183,8 +183,32 @@ if __name__ == '__main__':
                                               emailnew,
                                               addressnew)
                 
-                if ask_customer == 4:
+                elif ask_customer == 4:
                     customercontroller.show()
                 
                 else:
                     break
+
+        elif ask_global == 5:
+            employeecontroller = controller.EmployeeController()
+
+            while True:
+                ask_employee = int(input('Enter 1 to [register] a employee: \n'
+                                         'Enter 2 to [remove] a employee: \n'
+                                         'Enter 3 to [change] a employee: \n'
+                                         'Enter 4 to [show] employees: \n'
+                                         'Enter 5 to [exit]: \n'))
+                
+                if ask_employee == 1:
+                    clt = input('Enter the employee CLT: \n')
+                    name = input('Enter a employee name to register: \n')
+                    telephone = input('Enter a Telephone Number to register: \n')
+                    cpf = input('Enter a CPF number to register: \n')
+                    email = input('Enter a e-mail to register: \n')
+                    address = input('Enter the address to register: \n')
+                    employeecontroller.register(clt,
+                                                name,
+                                                telephone,
+                                                cpf,
+                                                email,
+                                                address)

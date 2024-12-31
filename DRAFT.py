@@ -1,19 +1,13 @@
 # File: /draft.py
 
-from models import *
-from dao import *
+                if ask_categories == 1:
+                    category = input('Enter the category you want to register: \n')
+                    categorycontroller.register(category)
 
+                elif ask_categories == 2:
+                    category = input('Enter the category you want to remove: \n')
+                    categorycontroller.remove(category)
 
-class CategoryController:
-    def remove(self, removecategory):
-        ...
-
-        salesdao_read = StockDao.read()
-
-        for i4 in range(len(salesdao_read)):
-            if salesdao_read[i4].product.category == removecategory:
-                salesdao_read[i4] = StockModel(ProductModel(
-                    salesdao_read[i4].product.name,
-                    salesdao_read[i4].product.price,
-                    'uncategorized'),
-                    salesdao_read[i4].quantity)
+                elif ask_categories == 3:
+                    categoryold = input('Enter the category you want to change: \n')
+                    categorynew = input('Enter the new category: \n')
