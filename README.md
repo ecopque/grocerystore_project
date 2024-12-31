@@ -5,6 +5,9 @@
 
 This project is an inventory and sales management system developed using pure Python, focusing on simplicity and organization. The system adopts the Model-View-Controller (MVC) architecture to ensure a well-defined and maintainable codebase. The goal was to create a solution using Python concepts, avoiding functions like `map`, `filter`, `lambda`, and others.
 
+IDE:
+![readme](https://github.com/ecopque/grocerystore_project/blob/main/prints/Screenshot%20from%202024-12-31%2010-41-30.png)
+
 ## Technologies Used
 
 - **Python 3.11**: The main programming language used to develop the project.
