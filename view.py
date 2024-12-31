@@ -26,8 +26,7 @@ if __name__ == '__main__':
                                'Enter 4 to access [Customer]\n'
                                'Enter 5 to access [Employee]\n'
                                'Enter 6 to access [Sales]\n'
-                               'Enter 7 to access [Show] top selling products\n'
-                               'Enter 8 to [exit]: \n'))
+                               'Enter 7 to [exit]: \n'))
                                     
         if ask_global == 1:
             categorycontroller = controller.CategoryController()
@@ -238,3 +237,37 @@ if __name__ == '__main__':
 
                 else:
                     break
+
+        elif ask_global == 6:
+            salescontroller = controller.SalesController()
+
+
+            while True:
+                ask_sales = int(input('Enter 1 to [register] a new sale: \n'
+                                      'Enter 2 to get total sales [report]: \n'
+                                      'Enter 3 to get [show] sales by period: \n'
+                                      'Enter 4 to [exit]: \n'))
+
+                if ask_sales == 1:
+                    nameproduct = input('Enter the product you want to register: \n')
+                    seller = input('Enter the name of the seller: \n')
+                    buyer = input('Enter the name of the buyer: \n')
+                    quantity_sold = input('Enter the quantity sold: \n')
+                    salescontroller.register(nameproduct,
+                                             seller,
+                                             buyer,
+                                             quantity_sold)
+                
+                elif ask_sales == 2:
+                    salescontroller.report()
+
+                elif ask_sales == 3:
+                    startdate = str(input('Enter the start date (D/M/Y): \n'))
+                    enddate = str(input('Enter the end date (D/M/Y): \n'))
+                    salescontroller(startdate, enddate)
+
+                else:
+                    break
+        
+        else:
+            break
