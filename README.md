@@ -5,7 +5,7 @@
 
 This project is an inventory and sales management system developed using pure Python, focusing on simplicity and organization. The system adopts the Model-View-Controller (MVC) architecture to ensure a well-defined and maintainable codebase. The goal was to create a solution using Python concepts, avoiding functions like `map`, `filter`, `lambda`, and others.
 
-## Technologies Used
+### Technologies Used
 
 - **Python 3.11**: The main programming language used to develop the project.
 - **MVC Architecture**: A design pattern used to separate concerns and responsibilities.
