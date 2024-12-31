@@ -55,6 +55,7 @@ Once the application starts, you will be presented with an interactive menu in t
 terminal:
 ![readme](https://github.com/ecopque/grocerystore_project/blob/main/prints/Screenshot%20from%202024-12-31%2010-33-05.png)
 
+
 ## Final Considerations
 
 This project was developed with the goal of learning and applying pure Python concepts, as well as the MVC architecture. The choice to use Python without external dependencies was made to keep the code simple and easy to understand. The inventory and sales management features are implemented in a modular way, ensuring maintainability and readability.
