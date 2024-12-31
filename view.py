@@ -142,3 +142,49 @@ if __name__ == '__main__':
 
                 else:
                     break
+
+        elif ask_global == 4:
+            customercontroller = controller.CustomerController()
+
+            while True:
+                ask_customer = int(input('Enter 1 to [register] a customer: \n'
+                                         'Enter 2 to [remove] a customer: \n'
+                                         'Enter 3 to [change] a customer: \n'
+                                         'Enter 4 to [show] customers: \n'
+                                         'Enter 5 to [exit]: \n'))
+                
+                if ask_customer == 1:
+                    name = input('Enter the customer you want to register: \n')
+                    telephone = input('Enter the telephone you want to register: \n')
+                    cpf = input('Enter the CPF you want to register: \n')
+                    email = input('Enter the email you want to register: \n')
+                    address = input('Enter the address you want to register: \n')
+                    customercontroller.register(name,
+                                                telephone,
+                                                cpf,
+                                                email,
+                                                address)
+
+                if ask_customer == 2:
+                    name = input('Enter the customer you want to remove: \n')
+                    customercontroller.remove(name)
+
+                if ask_customer == 3:
+                    nameold = input('Enter the customer you want to change: \n')
+                    namenew = input('Enter the new customer you want to change: \n')
+                    telephonenew = input('Enter the telephone you want to change: \n')
+                    cpfnew = input('Enter the new cpf you want to change: \n')
+                    emailnew = input('Enter the new e-mail you want to change: \n')
+                    addressnew = input('Enter the new address you want to change: \n')
+                    customercontroller.change(nameold,
+                                              namenew,
+                                              telephonenew,
+                                              cpfnew,
+                                              emailnew,
+                                              addressnew)
+                
+                if ask_customer == 4:
+                    customercontroller.show()
+                
+                else:
+                    break
