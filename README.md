@@ -20,7 +20,8 @@ The project is organized into three main layers according to the MVC architectur
 - **Controller**: Handles business logic and interacts with both the Models and Views.
 - **DAO**: Manages data interactions with the text files, providing methods for reading, writing, and updating data.
 
-###################### INSERT MIND MAP
+mind map:
+![readme](https://github.com/ecopque/grocerystore_project/blob/main/prints/Grocery_Store_mindmap.png)
 
 
 ## Features
